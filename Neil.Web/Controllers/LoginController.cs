@@ -44,7 +44,6 @@ namespace Neil.Web.Controllers
                 return Json(rd);
             }
 
-            if()
             return Json(rd.result);
         }
 
