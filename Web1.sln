@@ -1,0 +1,92 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Neil.Model", "Neil.Model\Neil.Model.csproj", "{DF51BC6E-0C35-4B2E-84AF-4CF7C2B0AD24}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Neil.DAL", "Neil.DAL\Neil.DAL.csproj", "{80522DFC-C173-4EBB-85AB-3BD7DAE74702}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Neil.BLL", "Neil.BLL\Neil.BLL.csproj", "{973403BF-9E60-4E30-B71F-FE7EE2047D25}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Neil.IDAL", "Neil.IDAL\Neil.IDAL.csproj", "{CDF58A09-FE2A-4F03-9C63-5C1FB32FBB9F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Neil.IBLL", "Neil.IBLL\Neil.IBLL.csproj", "{48CE08D0-EBAE-486F-AF21-E55ECC344BD9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Neil.Web", "Neil.Web\Neil.Web.csproj", "{D8F95B68-53EF-40AE-B2DB-9A99FBB82F96}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodedUITestProject1", "CodedUITestProject1\CodedUITestProject1.csproj", "{CE5E1096-3948-4930-9E42-8671D20FF1AB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Neil.DalAbstratFactory", "Neil.DalAbstratFactory\Neil.DalAbstratFactory.csproj", "{682EE8AF-A5BB-435B-ACBB-BBEE9FF57E76}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SpringNetDemo", "SpringNetDemo", "{7205C47E-6085-4EB4-924D-5F49710E30E8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpringNetDemo", "SpringNetDemo\SpringNetDemo.csproj", "{7F9F7404-FCC1-441B-ABA4-CBD0FF3084F7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DLL", "DLL", "{564876C3-95E8-4953-8F28-A1615C5DC841}"
+	ProjectSection(SolutionItems) = preProject
+		DLL\Common.Logging.dll = DLL\Common.Logging.dll
+		DLL\ICSharpCode.SharpZipLib.dll = DLL\ICSharpCode.SharpZipLib.dll
+		DLL\log4net.dll = DLL\log4net.dll
+		DLL\Memcached.ClientLibrary.dll = DLL\Memcached.ClientLibrary.dll
+		DLL\Spring.Core.dll = DLL\Spring.Core.dll
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Neil.Commom", "Neil.Commom\Neil.Commom.csproj", "{82DB9D19-03EE-4BAD-A7D7-5C31E08EB452}"
+EndProject
+Global
+	GlobalSection(SubversionScc) = preSolution
+		Svn-Managed = True
+		Manager = AnkhSVN - Subversion Support for Visual Studio
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DF51BC6E-0C35-4B2E-84AF-4CF7C2B0AD24}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF51BC6E-0C35-4B2E-84AF-4CF7C2B0AD24}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF51BC6E-0C35-4B2E-84AF-4CF7C2B0AD24}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF51BC6E-0C35-4B2E-84AF-4CF7C2B0AD24}.Release|Any CPU.Build.0 = Release|Any CPU
+		{80522DFC-C173-4EBB-85AB-3BD7DAE74702}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80522DFC-C173-4EBB-85AB-3BD7DAE74702}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80522DFC-C173-4EBB-85AB-3BD7DAE74702}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80522DFC-C173-4EBB-85AB-3BD7DAE74702}.Release|Any CPU.Build.0 = Release|Any CPU
+		{973403BF-9E60-4E30-B71F-FE7EE2047D25}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{973403BF-9E60-4E30-B71F-FE7EE2047D25}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{973403BF-9E60-4E30-B71F-FE7EE2047D25}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{973403BF-9E60-4E30-B71F-FE7EE2047D25}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CDF58A09-FE2A-4F03-9C63-5C1FB32FBB9F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CDF58A09-FE2A-4F03-9C63-5C1FB32FBB9F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CDF58A09-FE2A-4F03-9C63-5C1FB32FBB9F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CDF58A09-FE2A-4F03-9C63-5C1FB32FBB9F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{48CE08D0-EBAE-486F-AF21-E55ECC344BD9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{48CE08D0-EBAE-486F-AF21-E55ECC344BD9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{48CE08D0-EBAE-486F-AF21-E55ECC344BD9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{48CE08D0-EBAE-486F-AF21-E55ECC344BD9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D8F95B68-53EF-40AE-B2DB-9A99FBB82F96}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D8F95B68-53EF-40AE-B2DB-9A99FBB82F96}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D8F95B68-53EF-40AE-B2DB-9A99FBB82F96}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D8F95B68-53EF-40AE-B2DB-9A99FBB82F96}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE5E1096-3948-4930-9E42-8671D20FF1AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE5E1096-3948-4930-9E42-8671D20FF1AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE5E1096-3948-4930-9E42-8671D20FF1AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE5E1096-3948-4930-9E42-8671D20FF1AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{682EE8AF-A5BB-435B-ACBB-BBEE9FF57E76}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{682EE8AF-A5BB-435B-ACBB-BBEE9FF57E76}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{682EE8AF-A5BB-435B-ACBB-BBEE9FF57E76}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{682EE8AF-A5BB-435B-ACBB-BBEE9FF57E76}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7F9F7404-FCC1-441B-ABA4-CBD0FF3084F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F9F7404-FCC1-441B-ABA4-CBD0FF3084F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F9F7404-FCC1-441B-ABA4-CBD0FF3084F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F9F7404-FCC1-441B-ABA4-CBD0FF3084F7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{82DB9D19-03EE-4BAD-A7D7-5C31E08EB452}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{82DB9D19-03EE-4BAD-A7D7-5C31E08EB452}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{82DB9D19-03EE-4BAD-A7D7-5C31E08EB452}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{82DB9D19-03EE-4BAD-A7D7-5C31E08EB452}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{7F9F7404-FCC1-441B-ABA4-CBD0FF3084F7} = {7205C47E-6085-4EB4-924D-5F49710E30E8}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,291 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link href="~/Content/easyui/default/easyui.css" rel="stylesheet" />
+    <link href="~/Content/easyui/icon.css" rel="stylesheet" />
+    <script src="~/Scripts/easyuiJs/jquery.min.js"></script>
+    <script src="~/Scripts/easyuiJs/jquery.easyui.min.js"></script>
+    <script src="~/Scripts/easyuiJs/easyui-lang-zh_CN.js"></script>
+    <script src="~/Scripts/easyuiJs/datapattern.js"></script>
+</head>
+<body>
+    <input id="hidValue" style="display: none" value="0" />
+    <div>
+        <div>
+            <input id="txtBeginTime" class="easyui-datebox" data-options="formatter:myformatter,parser:myparser"></input> <b>--</b>  
+<input id="txtEndTime" class="easyui-datebox" data-options="formatter:myformatter,parser:myparser"></input>
+            <label>用户名:</label><input id="txtName" class="easyui-validatebox textbox" type="text" />
+            <label>备注:</label>
+            <input id="txtRemarks" class="easyui-validatebox textbox" type="text" />
+            <a class="easyui-linkbutton" data-options="iconCls:'icon-search'" onclick="Search()">搜索</a>
+        </div>
+        <div id="dg" style="height: 400px">
+        </div>
+    </div>
+    <div id="addDiv">
+        <div id="dlg" class="easyui-dialog" title="对话框" style="width: 400px; height: 220px; padding: 10px" data-options=" iconCls: 'icon-save',toolbar: '#dlg-toolbar',buttons: '#bb'">
+            <form id="ff" method="post">
+                <table cellpadding="5">
+                    <tr>
+                        <td>Name:</td>
+                        <td>
+                            <input id="name" class="easyui-validatebox textbox" type="text" name="name" data-options="required:true"></input></td>
+                    </tr>
+                    <tr>
+                        <td>pwd:</td>
+                        <td>
+                            <input id="pwd" class="easyui-validatebox textbox" type="text" name="pwd" data-options="required:true"></input></td>
+                    </tr>
+                    <tr>
+                        <td>remark:</td>
+                        <td>
+                            <input id="remark" class="easyui-validatebox textbox" type="text" name="remark" data-options="required:true"></input></td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+        <div id="bb">
+            <a href="#" class="easyui-linkbutton" onclick="openDialog()">保存</a>
+            <a href="#" class="easyui-linkbutton" onclick="closeDialog()">关闭</a>
+        </div>
+    </div>
+</body>
+<script type="text/javascript">
+    $(function () {
+        
+        $('#dlg').dialog('close');
+        lodaData();
+
+        
+
+        $('#txtEndTime').datebox().datebox('calendar').calendar({
+            validator: function (date) {
+                //var now = new Date();
+                //var d1 = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+                //var d2 = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 10);
+                var d1 = new Date($("#txtBeginTime").datebox('getValue'));
+                return d1 <= date;
+            }
+        });
+    });
+
+    function myformatter(date) {
+        var y = date.getFullYear();
+        var m = date.getMonth() + 1;
+        var d = date.getDate();
+        return y + '-' + (m < 10 ? ('0' + m) : m) + '-' + (d < 10 ? ('0' + d) : d);
+    }
+
+    function myparser(s) {
+        if (!s) return new Date();
+        var ss = (s.split('-'));
+        var y = parseInt(ss[0], 10);
+        var m = parseInt(ss[1], 10);
+        var d = parseInt(ss[2], 10);
+        if (!isNaN(y) && !isNaN(m) && !isNaN(d)) {
+            return new Date(y, m - 1, d);
+        } else {
+            return new Date();
+        }
+    }
+
+    function lodaData(par) {
+        $("#dg").datagrid({
+            url: '/UserInfo/GetUserInfo', //请求的数据源
+            title: '用户表格数据',
+            fitColumns: true, //列自适应宽度
+            nowap: true, //列内容多时自动折至第二行
+            striped: true,
+            idField: 'ID',
+            loadMsg: '正在加载用户信息……',
+            pagination: true, //显示分页
+            singleSelect: true,//是否单行选择
+            pageNumber: 1,//当前页
+            pageSize: 10, //页大小
+            pageList: [10, 20, 40, 60], //页大小下拉选项此项各value是pageSize的倍数
+            showHeader: true,
+            rownumbers: true,
+            queryParams: par,//查询参数
+            columns: [[//显示的列
+                {
+                    field: 'ID', title: 'ID', width: 100, sortable: true,
+                    editor: { type: 'validatebox', options: { required: true } }
+                },
+             {
+                 field: 'Name', title: '用户名', width: 100, sortable: true,
+                 editor: { type: 'validatebox', options: { required: true } }
+             },
+             {
+                 field: 'UPwd', title: '密码', width: 100, sortable: true,
+                 editor: { type: 'validatebox', options: { required: true } }
+             },
+             {
+                 field: 'Remark', title: '备注', width: 100, sortable: true,
+                 editor: { type: 'validatebox', options: { required: true } }
+             }
+             ,
+             {
+                 field: 'SubTime', title: '时间', width: 140, sortable: true,
+                 editor: {
+                     type: 'validatebox', options: { required: true }
+                 },
+                 formatter: function (value, row, index) {
+                     return (eval(value.replace(/\/Date\((\d+)\)\//gi, "new Date($1)"))).pattern("yyyy-MM-dd");
+                 }
+             }
+            ]],
+            toolbar: [{
+                id: 'btnGet',
+                text: '删除',
+                iconCls: 'icon-remove',
+                handler: function () {
+                    deleteSelect();
+                }
+            }, '-', {
+                id: 'btnAdd', text: '添加', iconCls: 'icon-add', handler: function () {
+                    $("#dlg").dialog("open");
+                }
+            }, '-', {
+                id: 'btnEdit', text: '修改', iconCls: 'icon-edit', handler: function () {
+
+                    var row = $("#dg").datagrid("getSelections");
+                    if (row.length < 1) {
+                        $.messager.alert("提醒", "请选择要修改的信息!", "error");
+                        return;
+                    }
+
+                    $("#dlg").dialog("open");
+                    $("#name").val(row[0].Name);
+                    $("#pwd").val(row[0].UPwd);
+                    $("#remark").val(row[0].Remark);
+                    $("#hidValue").val("1");
+                }
+            }
+            ],
+
+        })
+    };
+
+    function deleteSelect() {
+        var row = $("#dg").datagrid("getSelections");
+        if (row.length == 0 || row == undefined) {
+            $.messager.alert("提醒", "请选择要删除的记录!", "error");
+            return;
+        }
+        if ($.messager.confirm("提示", "请选择要删除的记录",
+            function (r) {
+                if (r) {
+                    var strId = "";
+                    for (var i = 0; i < row.length; i++) {
+                        strId = strId + row[i].ID + ",";
+        }
+        strId = strId.substring(0, strId.length - 1);
+        $.ajax({
+            url: "/UserInfo/DeleteUserInfoById", data: { id: strId }, type: "POST", success: function (data) {
+                        if (data == "ok") {
+                            $("#dg").datagrid("reload");
+                            $("#dg").datagrid("clearSelections");
+            //$.messager.alert("提示", "已删除", "warning");
+
+        }
+        }
+        });
+
+        }
+        }));
+    }
+
+    function closeDialog() {
+        $('#dlg').dialog('close');
+    }
+    function openDialog() {
+        var fom = $("#ff").form('validate');
+        if (!fom) {
+            $.messager.alert("警告", "信息未填写完整！", "error");
+            return;
+        }
+
+        //添加
+        if ($("#hidValue").val() == "0") {
+
+            $.ajax({
+                url: "/UserInfo/AddUserInfo",
+                data: {
+                    name: $("#name").val(), pwd: $("#pwd").val(), remark: $("#remark").val()
+                },
+                type: "post",
+                success: function (d) {
+                    if (d == "no") {
+                        $('#dlg').dialog('close');
+                        $("#dg").datagrid("reload");
+                        $("#name").val("");
+                        pwd: $("#pwd").val("");
+                        remark: $("#remark").val("");
+                    }
+                }
+            });
+        }
+
+        //修改
+        if ($("#hidValue").val() == "1") {
+            var row = $("#dg").datagrid("getSelections");
+            if (row.length < 1) {
+                $.messager.alert("提醒", "请选择要修改的信息!", "error");
+                return;
+            }
+            var fom = $("#ff").form('validate');
+            if (!fom) {
+                $.messager.alert("警告", "信息未填写完整！", "error");
+                return;
+            }
+            $.ajax({
+                url: "/UserInfo/UpdateUserInfo",
+                data: {
+                    id: row[0].ID, name: $("#name").val(), pwd: $("#pwd").val(), remark: $("#remark").val()
+                },
+                type: "post",
+                success: function (d) {
+                    if (d == "no") {
+                        $("#hidValue").val("0");
+                        $('#dlg').dialog('close');
+                        $("#dg").datagrid("reload");
+                        $("#name").val("");
+                        pwd: $("#pwd").val("");
+                        remark: $("#remark").val("");
+                        $.messager.alert("提示", "修改成功");
+                    }
+                }
+            });
+        }
+
+    }
+
+    function Search() {
+        var name = $("#txtName").val();
+        var remark = $("#txtRemarks").val();
+        var par={name: name, remark: remark};
+        lodaData(par);
+        //var dg = $("#dg").datagrid("options");
+        //if (name != "" && name != undefined||remark != ""&&remark!=undefined) {
+        //    $.ajax({
+        //        url: "/UserInfo/GetUserInfo",
+        //        data: {page:dg.pageNumber,rows:dg.pageSize, name: name, remark: remark },
+        //        type: "post",
+        //        success: function (d) {
+        //            if (d == "no") {
+
+        //            }
+        //        }
+        //    });
+        //}
+    }
+
+</script>
+</html>
