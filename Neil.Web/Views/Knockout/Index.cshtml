@@ -1,0 +1,57 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <script src="~/Scripts/jquery-3.1.1.min.js"></script>
+    <script src="~/Scripts/Knockout/knockout-3.4.1.js"></script>
+</head>
+<body>
+    <div>
+        <p>
+            <label>FirstName :</label><span data- data-bind="text:firstName"></span></p>
+        <p>
+            <label>LastName :</label><span data-bind="text:lastName"></span></p>
+        <p>
+            <label>FullName :</label><span data-bind="text:fullName"></span></p>
+        <p>
+            <label>FirstName :</label><input data-bind="value:firstName" /></p>
+        <p>
+            <label>LastName :</label><input data-bind="value:lastName" /></p>
+        <h3>Meal upgrades</h3>
+
+        <p>Make your flight more bearable by selecting a meal to match your social and economic status.</p>
+        <select data-model="viewModels" data-bind="options: availableCountries"></select>
+        @*Chosen meal:
+        <select data-bind="options: availableMeals,
+                                optionsText: 'mealName'">
+        </select>*@
+    </div>
+</body>
+<script type="text/javascript">
+    $(function () {
+
+        var viewModel = {
+            availableCountries: ko.observableArray(['France', 'Germany', 'Spain'])
+        };
+        //ko.applyBindings(viewModel);
+
+        var viewModels = {
+            firstName: ko.observable("Neil"),
+            lastName: ko.observable(".Ni")
+        }
+        viewModels.fullName = ko.dependentObservable(function () {
+            return viewModels.firstName() + viewModels.lastName();
+        }, viewModels);
+        ko.attach("viewModels", viewModels);
+        //ko.applyBindings(viewModel);
+        //viewModels.availableCountries
+    });
+
+</script>
+</html>

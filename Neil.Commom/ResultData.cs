@@ -6,9 +6,12 @@ using System.Threading.Tasks;
 
 namespace Neil.Commom
 {
+    /// <summary>
+    /// 返回结果
+    /// </summary>
     public class ResultData
     {
-        public bool result { get; set; }
+        public bool isSuccess { get; set; }
         public object data { get; set; }
         public string message { get; set; }
         public object rows { get; set; }

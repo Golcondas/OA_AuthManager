@@ -9,7 +9,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta charset="utf-8" />
     <title>登录页面</title>
-    <!--link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />-->
     <link href="~/BootStrap页面设计/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
 </head>
 <body>
@@ -36,53 +35,55 @@
             <div class="form-group">
                 <label class="col-sm-2 control-label" for="code">验证码</label>
                 <div class="col-sm-2">
-                    <input type="password" class="form-control" id="code" placeholder="请输入验证码" />
+                    <input type="text" class="form-control" id="txtCode" placeholder="请输入验证码" />
                 </div>
                 <div class="col-sm-1">
                     <img src="/Login/GetValidateCode?ID=1 " id="imgCode" alt="单击可刷新" onclick="ClickRemoveChangeCode()" />
                 </div>
                 <div class="col-sm-2">
-                    <a href="javascript:void(0)" onclick="ClickRemoveChangeCode();return false;">看不清，换一张</a>
+                    <a href="javascript:void(0);" onclick="ClickRemoveChangeCode();return false;">看不清，换一张</a>
                 </div>
             </div>
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
-                    <input type="button" class="btn" onclick="OK()" value="登录" />
+                    <input type="button" class="btn" onclick="Login(); return false;" value="登录" />
                 </div>
             </div>
         </form>
     </div>
 </body>
-<script src="~/Scripts/jquery-1.7.1.min.js"></script>
+<script src="~/Scripts/jquery-3.1.1.min.js"></script>
+<script src="~/Scripts/bootStrap/js/bootstrap.min.js"></script>
+<script src="~/Scripts/bootStrap/js/bootbox.min.js"></script>
 <script type="text/javascript">
     $(function () {
-        //OK()
-        //ClickRemoveChangeCode();
     });
-    function OK() {
-        alert("HHHH");
-    }
 
     function ClickRemoveChangeCode() {
         var code = $("#imgCode").attr("src");
-        $("#imgCode").attr("src", code + "1");
-        //$.ajax({
-        //    data: "",
-        //    url: "/Login/GetValidateCode",
-        //    type: "get",
-        //    dataType: "json",
-        //    success: function (data) {
-        //        if (data)
-        //        {
-        //            console.log(data.data);
-        //        }
-        //    }
-        //});
+        $("#imgCode").attr("src", code + (new Date().getTime()));
     }
 
     function Login() {
-        $.ajax({
 
+        bootbox.alert("GGGG");
+
+        var tt =window.location.replace("/Login?id=${99}");
+
+        var parm = {
+            code: $("#txtCode").val()
+        };
+        $.ajax({
+            url: "/Login/Login",
+            type: "post",
+            data: parm,
+            dataType: "json",
+            success: function (data) {
+                if (data.isSuccess) {
+                    
+                    alert("登录成功！");
+                }
+            }
         });
     }
 </script>

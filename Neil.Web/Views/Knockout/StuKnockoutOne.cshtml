@@ -1,0 +1,66 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Knockout学习笔记之一</title>
+    <script src="/Scripts/jquery-3.1.1.min.js"></script>
+    <script src="/Scripts/Knockout/knockout-3.4.1.js"></script>
+</head>
+<body>
+    <p>First Name:<input data-bind="value: firstName" /></p>
+    <p>Last Name:<input data-bind="value: lastName" /></p>
+    <p>FullName:<input data-bind="value: fullName" /></p>
+    <button data-bind="click:captalizeLastName">Go Caps</button>
+    @*<button data-bind="click: capitalizeLastName">Go Caps</button>*@
+</body>
+<script type="text/javascript">
+    $(function () {
+
+        //appViewModel.fullName = ko.dependentObservable(function () {
+        //    return this.firstName() + " " + this.lastName();
+        //}, appViewModel);
+
+        //appViewModel.captalizeLastName = function () {
+        //    appViewModel.firstName().toUpperCase();
+        //};
+
+        ko.applyBindings(new appViewModel());
+    });
+    
+    function appViewModel() {
+        var self = this;
+        self.firstName = ko.observable("Neil"),
+        self.lastName = ko.observable("Ni");
+
+        self.fullName = ko.computed(function () {
+            return self.firstName() + " " + self.lastName();
+        }, self);
+
+        self.captalizeLastName = function () {
+            self.lastName(self.lastName().toUpperCase());
+            self.firstName(self.firstName().toLowerCase());
+        };
+    }
+
+    //window.onload = function () {
+    //    ko.applyBindings(new AppViewModel());
+    //}
+
+    //function AppViewModel() {
+    //    this.firstName = ko.observable("Hello ");
+    //    this.lastName = ko.observable("World!");
+    //    this.fullName = ko.computed(function () {
+    //        return this.firstName() + " " + this.lastName();
+    //    }, this);
+    //    this.capitalizeLastName = function () {
+    //        this.lastName(this.lastName().toUpperCase());
+    //    }
+    //}
+    
+</script>
+</html>

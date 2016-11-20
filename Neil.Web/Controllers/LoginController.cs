@@ -33,18 +33,32 @@ namespace Neil.Web.Controllers
             return File(bytes, @"image/jpeg");
         }
 
-        public ActionResult Login()
+        /// <summary>
+        /// 用户登录
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult Login(string code)
         {
-            ResultData rd=new ResultData();
-            rd.result = false;
-            rd.message = "登录成功";
+            ResultData result = new ResultData();
+
             string validateCode = Session["ValidateCode"] == null ? string.Empty : Session["ValidateCode"] + "";
-            if (string.IsNullOrWhiteSpace(validateCode)) {
-                rd.message = "验证码错误";
-                return Json(rd);
+            if (string.IsNullOrWhiteSpace(validateCode))
+            {
+                result.message = "验证码为空";
+                return Json(result.isSuccess);
             }
 
-            return Json(rd.result);
+            if (string.Equals(code.Trim(),validateCode, StringComparison.InvariantCultureIgnoreCase))
+            {
+                result.isSuccess = true;
+                result.message = "登录成功";
+            }
+            else
+            {
+                result.isSuccess = false;
+                result.message = "登录失败!";
+            }
+            return Json(result);
         }
 
     }
