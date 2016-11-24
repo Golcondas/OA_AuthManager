@@ -46,6 +46,15 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.SharePoint, Version=14.900.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>sharepointDll\Microsoft.SharePoint.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SharePoint.Library, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>sharepointDll\Microsoft.SharePoint.Library.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -53,6 +62,7 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.XML" />
     <Reference Include="UIAutomationTypes" />
     <Reference Include="WindowsBase" />
   </ItemGroup>
@@ -64,6 +74,7 @@
   <ItemGroup>
     <Compile Include="ExtensionInt.cs" />
     <Compile Include="JsonConverter.cs" />
+    <Compile Include="SharePointDebug.cs" />
     <Compile Include="UserBehaviorBlackModel.cs" />
     <Compile Include="UserBehaviorSetting.cs" />
     <Compile Include="CodedUITest1.cs" />
@@ -93,6 +104,10 @@
       <Project>{df51bc6e-0c35-4b2e-84af-4cf7c2b0ad24}</Project>
       <Name>Neil.Model</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="sharepointDll\Microsoft.SharePoint.dll" />
+    <Content Include="sharepointDll\Microsoft.SharePoint.Library.dll" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

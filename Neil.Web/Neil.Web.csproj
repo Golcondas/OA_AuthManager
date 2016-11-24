@@ -605,6 +605,7 @@
     <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\Knockout\Index.cshtml" />
     <Content Include="Views\Knockout\StuKnockoutOne.cshtml" />
+    <Content Include="Views\Knockout\SeatReservation.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

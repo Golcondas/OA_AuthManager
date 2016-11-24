@@ -18,10 +18,21 @@ namespace Neil.Web.Controllers
 
         /// <summary>
         /// http://www.cnblogs.com/sccd/p/5971053.html
-        /// Knockout学习笔记之一
+        /// Knockout学习笔记之一ex1
         /// </summary>
         /// <returns></returns>
         public ActionResult StuKnockoutOne()
+        {
+            return View();
+        }
+
+        /// <summary>
+        /// http://www.cnblogs.com/sccd/p/5971053.html
+        /// Knockout学习笔记之一ex2
+        /// 预定位置
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult SeatReservation()
         {
             return View();
         }
