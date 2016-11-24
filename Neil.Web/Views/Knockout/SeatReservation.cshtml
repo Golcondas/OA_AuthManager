@@ -14,36 +14,54 @@
         window.onload = function () {
             ko.applyBindings(new ReservationsViewModel());
         }
-        function SeatReservation(name, initialMeal) {
+
+        var ReservationsViewModel=function(){
             var self = this;
-            self.name = name;
-            self.meal = initialMeal;
-            //self.fommatterMoney = ko.dependentObservable(function () {
-            //    return "$"+self.
-            //});
-        }
-
-        function ReservationsViewModel() {
-            var self = this;
-
-            self.seats = ko.observableArray([
-                new SeatReservation("neil", self.availableMeals[0]),
-                new SeatReservation("ni", self.availableMeals[0])
-            ]);
-
             self.availableMeals = [
                 { mealName: "Standard(Sandwich)", price: 0 },
-                { mealName: "Premium:(lobster)", price: 34.95 },
-                { mealName: "Ultimate(whole zebra)", price: 290 }
-            ];
+                { mealName: "Premium:(lobster)", price: 34.951 },
+                { mealName: "Ultimate(whole zebra)", price: 29032 }
+            ];  
 
+            self.seats = ko.observableArray([
+                new SeatReservation("", self.availableMeals[0]),
+            ]);
+
+            self.addSeat =function () {
+                return self.seats.push(new SeatReservation("", self.availableMeals[0]));
+            };
+
+            self.removeSeat = function (thisSeat) {
+                return self.seats.remove(thisSeat);
+            }
             
+            self.totalPrice = ko.computed(function () {
+                var total = 0;
+                for (var i = 0; i < self.seats().length; i++) {
+                    total += self.seats()[i].meal().price;
+                }
+                return total.toFixed(2);
+            });
 
-            //self.addSeat = ko.observableArray(function () {
-            //    return self.availableMeals.push(new self.availableMeals("", self.availableMeals[0]));
-            //});
+            self.totalSurcharge = ko.computed(function () {
+                var total = 0;
+                for (var i = 0; i < self.seats().length; i++) {
+                    total += self.seats()[i].meal().price;
+                }
+                return total;
+            });
+        }
 
-
+        var SeatReservation = function (name, initialMeal) {
+            var self = this;
+            self.name = ko.observable(name);
+            self.meal = ko.observable(initialMeal);
+            self.formattedPrice = ko.dependentObservable(function () {
+                var strPrice = (self.meal().price.toString()).trim().length == 0 ? "0" : (self.meal().price.toString()).trim();
+                var indexValue = strPrice.indexOf(".");
+                var strLength = strPrice.length;
+                return "$" + strPrice.substring(0, indexValue == -1 ? strLength : indexValue + 3);
+            });
         }
     </script>
 </head>
@@ -55,19 +73,27 @@
         <thead>
             <tr>
                 <th>Passenger name</th>
-                <th>Meal	Surcharge</th>
+                <th>Meal Surcharge</th>
                 <th></th>
             </tr>
         </thead>
         <tbody data-bind="foreach:seats">
             <tr>
-                <td data-bind="value:name"></td>
                 <td>
-                    <td><select data-bind="options:$root.availableMeals,value:price,optionsText:'mealName'"></select></td>
-                <td data-bind=""></td>
+                    <input data-bind="value:name" /></td>
+                <td>
+                    <select data-bind="options:$root.availableMeals,value:meal,optionsText:'mealName'">
+                    </select>
+                </td>
+                <td data-bind="text:formattedPrice"></td>
+                <td><a href="#" data-bind="click:$root.removeSeat">Remove</a></td>
             </tr>
         </tbody>
     </table>
+    <div data-bind="visible:totalPrice()>0">totalPrice surcharge:$<span data-bind="text:totalPrice"></span>
+    </div>
+    Total surcharge:$<span data-bind="text:totalSurcharge().toFixed(2)"></span><br />
+    <button data-bind="click:addSeat,enable:seats().length<10">Reserve another seat</button>
 </body>
 
 </html>
