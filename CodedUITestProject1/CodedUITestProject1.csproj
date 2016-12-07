@@ -61,6 +61,7 @@
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.XML" />
     <Reference Include="UIAutomationTypes" />
@@ -72,6 +73,7 @@
     </CodeAnalysisDependentAssemblyPaths>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EncodeTest.cs" />
     <Compile Include="ExtensionInt.cs" />
     <Compile Include="JsonConverter.cs" />
     <Compile Include="SharePointDebug.cs" />
