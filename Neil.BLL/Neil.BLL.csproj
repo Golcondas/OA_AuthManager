@@ -52,6 +52,10 @@
       <Project>{682ee8af-a5bb-435b-acbb-bbee9ff57e76}</Project>
       <Name>Neil.DalAbstratFactory</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Neil.DAL\Neil.DAL.csproj">
+      <Project>{80522dfc-c173-4ebb-85ab-3bd7dae74702}</Project>
+      <Name>Neil.DAL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Neil.IBLL\Neil.IBLL.csproj">
       <Project>{48ce08d0-ebae-486f-af21-e55ecc344bd9}</Project>
       <Name>Neil.IBLL</Name>

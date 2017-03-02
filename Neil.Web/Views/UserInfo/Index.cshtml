@@ -137,6 +137,7 @@
                      type: 'validatebox', options: { required: true }
                  },
                  formatter: function (value, row, index) {
+                     var dateTime = value.formatter("yyyy-MM-dd hh:mm:ss");
                      return (eval(value.replace(/\/Date\((\d+)\)\//gi, "new Date($1)"))).pattern("yyyy-MM-dd");
                  }
              }
