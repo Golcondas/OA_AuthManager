@@ -5,6 +5,10 @@
     <property name="userInfoService" ref="userInfoServiceObject" />
   </object>
 
+  <object type="Neil.Web.Controllers.UserInfoController, Neil.Web.Controllers" singleton="false" >
+    <property name="userInfoService" ref="userInfoServiceObject" />
+  </object>
+
   <object type="Neil.BLL.UserInfoSerivce, Neil.BLL" singleton="false" name="userInfoServiceObject" >
   </object>
 

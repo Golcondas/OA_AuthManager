@@ -57,6 +57,15 @@
     <Reference Include="Spring.Core">
       <HintPath>..\DLL\Spring.Core.dll</HintPath>
     </Reference>
+    <Reference Include="Spring.Web">
+      <HintPath>..\DLL\Spring.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="Spring.Web.Extensions">
+      <HintPath>..\DLL\Spring.Web.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Spring.Web.Mvc4">
+      <HintPath>..\DLL\Spring.Web.Mvc4.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Entity" />
@@ -626,6 +635,10 @@
     <ProjectReference Include="..\Neil.DalAbstratFactory\Neil.DalAbstratFactory.csproj">
       <Project>{682ee8af-a5bb-435b-acbb-bbee9ff57e76}</Project>
       <Name>Neil.DalAbstratFactory</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Neil.DAL\Neil.DAL.csproj">
+      <Project>{80522dfc-c173-4ebb-85ab-3bd7dae74702}</Project>
+      <Name>Neil.DAL</Name>
     </ProjectReference>
     <ProjectReference Include="..\Neil.IBLL\Neil.IBLL.csproj">
       <Project>{48ce08d0-ebae-486f-af21-e55ecc344bd9}</Project>

@@ -124,5 +124,15 @@ namespace CodedUITestProject1
             int d = b.ExtensionMethod();
             Console.ReadLine();
         }
+
+        [TestMethod]
+        public void Test3()
+        {
+            var dt1 = Convert.ToDateTime("2017-04-18");
+            var dt2 = Convert.ToDateTime("2017-03-19");
+            var result = dt1.Subtract(dt2).Days;
+            var result2 = dt1.AddDays(-30);
+            var result3 = dt2.AddDays(-30);
+        }
     }
 }

@@ -9,6 +9,7 @@ namespace Neil.Commom
     /// <summary>
     /// 返回结果
     /// </summary>
+    [Serializable]
     public class ResultData
     {
         public bool isSuccess { get; set; }

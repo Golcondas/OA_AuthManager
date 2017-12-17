@@ -11,6 +11,7 @@ namespace Neil.Web.Controllers
     public class UserInfoController : Controller
     {
         IUserInfoService userInfoService = new Neil.BLL.UserInfoSerivce();
+        //IUserInfoService userInfoService {get;set;}
         //
         // GET: /UserInfo/
         public ActionResult Index()
@@ -30,7 +31,7 @@ namespace Neil.Web.Controllers
             if (string.IsNullOrEmpty(name) && string.IsNullOrEmpty(remark))
             {
                 int totalCount = 0;
-                var userInfo = userInfoService.LoadEntitiesWhere<int>(c => true, c => c.ID, true, out totalCount, pageIndex, pageSize);
+                var userInfo = userInfoService.LoadEntitiesWhere<int>(c => true, c => c.ID, false, out totalCount, pageIndex, pageSize);
                 var temp = from u in userInfo
                            select new
                            {
@@ -38,7 +39,7 @@ namespace Neil.Web.Controllers
                                Name = u.UName,
                                UPwd = u.UPwd,
                                Remark = u.Remark,
-                               SubTime = u.SubTime
+                               SubTime = u.SubTime,
                            };
                 var result = temp.ToList();
                 return Json(new { rows = temp.ToList(), total = totalCount }, JsonRequestBehavior.AllowGet);
@@ -51,7 +52,7 @@ namespace Neil.Web.Controllers
                 model.UName = name;
                 model.Remark = remark;
                 int totalCount = 0;
-                var userInfo = userInfoService.LoadEntitiesWhere<int>(c =>c.UName.Contains(model.UName)&&c.Remark.Contains(model.Remark), c => c.ID, true, out totalCount, pageIndex, pageSize);
+                var userInfo = userInfoService.LoadEntitiesWhere<int>(c =>c.UName.Contains(model.UName)&&c.Remark.Contains(model.Remark), c => c.ID, false, out totalCount, pageIndex, pageSize);
                 var temp = from u in userInfo
                            select new
                            {
