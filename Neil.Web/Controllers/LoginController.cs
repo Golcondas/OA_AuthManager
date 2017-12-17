@@ -10,7 +10,7 @@ namespace Neil.Web.Controllers
 {
     public class LoginController : Controller
     {
-        IBLL.IUserInfoService userInfoService { get; set; }
+        //IBLL.IUserInfoService userInfoService { get; set; }
         //
         // GET: /Login/
 

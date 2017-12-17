@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <objects xmlns="http://www.springframework.net">
 
-  <object type="Neil.Web.Controllers.LoginController, Neil.Web.Controllers" singleton="false" >
+  <!--<object type="Neil.Web.Controllers.LoginController, Neil.Web.Controllers" singleton="false" >
     <property name="userInfoService" ref="userInfoServiceObject" />
-  </object>
+  </object>-->
 
-  <object type="Neil.Web.Controllers.UserInfoController, Neil.Web.Controllers" singleton="false" >
+  <object type="Neil.Web.Controllers.UserInfoController, Neil.Web" singleton="false" >
     <property name="userInfoService" ref="userInfoServiceObject" />
   </object>
 

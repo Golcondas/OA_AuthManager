@@ -10,8 +10,8 @@ namespace Neil.Web.Controllers
 {
     public class UserInfoController : Controller
     {
-        IUserInfoService userInfoService = new Neil.BLL.UserInfoSerivce();
-        //IUserInfoService userInfoService {get;set;}
+        //IUserInfoService userInfoService = new Neil.BLL.UserInfoSerivce();
+        IUserInfoService userInfoService {get;set;}
         //
         // GET: /UserInfo/
         public ActionResult Index()
