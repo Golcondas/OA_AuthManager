@@ -10,7 +10,7 @@ namespace Neil.Web.Controllers
 {
     public class LoginController : Controller
     {
-        //IBLL.IUserInfoService userInfoService { get; set; }
+        IBLL.IUserInfoService userInfoService { get; set; }
         //
         // GET: /Login/
 
@@ -37,26 +37,48 @@ namespace Neil.Web.Controllers
         /// 用户登录
         /// </summary>
         /// <returns></returns>
-        public ActionResult Login(string code)
+        public ActionResult ValidateLogin(string code, string userName, string password)
         {
             ResultData result = new ResultData();
 
-            string validateCode = Session["ValidateCode"] == null ? string.Empty : Session["ValidateCode"] + "";
-            if (string.IsNullOrWhiteSpace(validateCode))
+            if (string.IsNullOrWhiteSpace(code))
             {
                 result.message = "验证码为空";
-                return Json(result.isSuccess);
+                return Json(result);
             }
 
-            if (string.Equals(code.Trim(),validateCode, StringComparison.InvariantCultureIgnoreCase))
+            if (string.IsNullOrWhiteSpace(userName))
             {
-                result.isSuccess = true;
+                result.message = "用户名为空";
+                return Json(result);
+            }
+
+            if (string.IsNullOrWhiteSpace(password))
+            {
+                result.message = "密码为空";
+                return Json(result);
+            }
+
+            string validateCode = Session["ValidateCode"] == null ? string.Empty : Session["ValidateCode"] + "";
+            
+            if (!string.Equals(code.Trim(),validateCode, StringComparison.InvariantCultureIgnoreCase))
+            {
+                result.message = "验证码错误";
+                return Json(result);
+            }
+
+            var getUserInfo = userInfoService.LoadEntities(t => t.UName == userName && t.UPwd == password).FirstOrDefault();
+            if (getUserInfo != null && getUserInfo.UName == userName)
+            {
+                String ssesionid = Guid.NewGuid() + "";
+                Commom.MemCachedHelper.SetTime(ssesionid, Commom.JsonHelper.ObjectToJson(getUserInfo), DateTime.Today.AddDays(30));
+                Response.Cookies["neilCookie"].Value = ssesionid;
+                result.issuccess = true;
                 result.message = "登录成功";
             }
-            else
+            else 
             {
-                result.isSuccess = false;
-                result.message = "登录失败!";
+                result.message = "登录失败";
             }
             return Json(result);
         }
