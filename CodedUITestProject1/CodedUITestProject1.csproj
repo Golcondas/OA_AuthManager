@@ -56,6 +56,25 @@
       <HintPath>sharepointDll\Microsoft.SharePoint.Library.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="ServiceStack, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DLL\ServiceStack.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.Common">
+      <HintPath>..\DLL\ServiceStack.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.Interfaces">
+      <HintPath>..\DLL\ServiceStack.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.Redis">
+      <HintPath>..\DLL\ServiceStack.Redis.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.ServiceInterface">
+      <HintPath>..\DLL\ServiceStack.ServiceInterface.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.Text">
+      <HintPath>..\DLL\ServiceStack.Text.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Entity" />
@@ -76,6 +95,7 @@
     <Compile Include="EncodeTest.cs" />
     <Compile Include="ExtensionInt.cs" />
     <Compile Include="JsonConverter.cs" />
+    <Compile Include="RedisTest.cs" />
     <Compile Include="SharePointDebug.cs" />
     <Compile Include="UserBehaviorBlackModel.cs" />
     <Compile Include="UserBehaviorSetting.cs" />
@@ -90,6 +110,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Neil.Commom\Neil.Commom.csproj">
+      <Project>{82db9d19-03ee-4bad-a7d7-5c31e08eb452}</Project>
+      <Name>Neil.Commom</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Neil.DalAbstratFactory\Neil.DalAbstratFactory.csproj">
       <Project>{682ee8af-a5bb-435b-acbb-bbee9ff57e76}</Project>
       <Name>Neil.DalAbstratFactory</Name>
