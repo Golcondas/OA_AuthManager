@@ -1,7 +1,9 @@
 ﻿using Neil.DalAbstratFactory;
+using Neil.Model.OrderModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -32,6 +34,10 @@ namespace Neil.BLL
             return GetCurrentDal.LoadEntitiesWhere<S>(lambdaWhere, orderByWhere, isAsc, out totalCount, pageIndex, pageSize);
         }
 
+        public IQueryable<T> GetAllEntity(Expression<Func<T, bool>> condition, int pageIndex, int pageSize, out long total, params OrderModelField[] orderByExpression) {
+            return GetCurrentDal.GetAllEntity(condition,pageIndex,pageSize,out total,orderByExpression);
+        }
+
         //添加
         public bool AddEntities(T model)
         {
@@ -52,5 +58,6 @@ namespace Neil.BLL
             GetCurrentDal.DeleteByModel(model);
             return this.DbSession.SaveChangesDbSession();
         }
+
     }
 }

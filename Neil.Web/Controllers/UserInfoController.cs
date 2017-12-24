@@ -1,5 +1,6 @@
 ﻿using Neil.IBLL;
 using Neil.Model;
+using Neil.Model.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,8 +32,10 @@ namespace Neil.Web.Controllers
             if (string.IsNullOrEmpty(name) && string.IsNullOrEmpty(remark))
             {
                 int totalCount = 0;
-                var userInfo = userInfoService.LoadEntitiesWhere<int>(c => true, c => c.ID, false, out totalCount, pageIndex, pageSize);
-                var temp = from u in userInfo
+                var userInfo = userInfoService.LoadEntitiesWhere<int>(c => true, c => c.ID, false, out totalCount, pageIndex, pageSize).ToList();
+                var userInfoList = UserInfoModel.GetUserInfoList(userInfo);
+
+                var temp = from u in userInfoList
                            select new
                            {
                                ID = u.ID,
@@ -53,19 +56,19 @@ namespace Neil.Web.Controllers
                 model.Remark = remark;
                 int totalCount = 0;
                 var userInfo = userInfoService.LoadEntitiesWhere<int>(c =>c.UName.Contains(model.UName)&&c.Remark.Contains(model.Remark), c => c.ID, false, out totalCount, pageIndex, pageSize);
-                var temp = from u in userInfo
+                var userInfoList = UserInfoModel.GetUserInfoList(userInfo.ToList());
+
+                var temp = from u in userInfoList
                            select new
                            {
                                ID = u.ID,
                                Name = u.UName,
                                UPwd = u.UPwd,
                                Remark = u.Remark,
-                               SubTime = u.SubTime
+                               SubTime = u.SubTime,
                            };
                 var result = temp.ToList();
-                //return Json(new { rows = result, total = totalCount }, JsonRequestBehavior.AllowGet);
-
-                return Json(new { rows = result, total = totalCount }, JsonRequestBehavior.AllowGet);
+                return Json(new { rows = temp.ToList(), total = totalCount }, JsonRequestBehavior.AllowGet);
             }
             
         }

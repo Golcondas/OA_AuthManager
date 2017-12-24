@@ -11,19 +11,14 @@ namespace Neil.Commom
     public class RedisHelper
     {
         #region static field
-        static string redisIp = System.Configuration.ConfigurationManager.AppSettings["redisIp"].ToString();
+
+        static string redisIp = ConfigurationManager.AppSettings["redisIp"].ToString();
         static string redisPort = ConfigurationManager.AppSettings["redisPort"].ToString();
         static string redisPassword = ConfigurationManager.AppSettings["redisPassword"].ToString();
-        static RedisClient client = new RedisClient(redisIp, 6379);
-
-        public static void SetPassword()
+        static RedisClient client = new RedisClient(redisIp, Convert.ToInt32(redisPort));
+        static RedisHelper() 
         {
-            client.Password = redisPassword;
-        }
-
-        public RedisHelper()
-        {
-            client.Password = redisPassword;
+                client.Password = redisPassword;
         }
 
         #endregion
@@ -35,10 +30,6 @@ namespace Neil.Commom
         /// <returns>对象</returns>
         public static T Get<T>(string token) where T : class,new()
         {
-            if (client.Password == null)
-            {
-                SetPassword();
-            }
             return client.Get<T>(token);
         }
 
@@ -49,10 +40,6 @@ namespace Neil.Commom
         /// <returns>对象</returns>
         public static String GetString(string token)
         {
-            if (client.Password == null)
-            {
-                SetPassword();
-            }
             return client.Get<String>(token);
         }
         /// <summary>
@@ -63,11 +50,7 @@ namespace Neil.Commom
         /// <param name="obj">对象</param>
         public static bool Set<T>(string token, T obj) where T : class,new()
         {
-            if (client.Password == null)
-            {
-                SetPassword();
-            }
-           return client.Set<T>(token, obj);
+            return client.Set<T>(token, obj);
         }
 
         /// <summary>
@@ -78,19 +61,11 @@ namespace Neil.Commom
         /// <param name="obj">对象</param>
         public static bool SetString(string token, string value)
         {
-            if (client.Password == null)
-            {
-                SetPassword();
-            }
             return client.Set<String>(token, value);
         }
 
-        public static bool SetTime<T>(string token, DateTime dt, T obj) where T : class,new() 
+        public static bool SetTime<T>(string token, DateTime dt, T obj) where T : class,new()
         {
-            if (client.Password == null)
-            {
-                SetPassword();
-            }
             return client.Set<T>(token, obj, dt);
         }
 
@@ -100,12 +75,8 @@ namespace Neil.Commom
         /// <typeparam name="T">对象类型</typeparam>
         /// <param name="token">key</param>
         /// <param name="obj">对象</param>
-        public static bool SetStringTime(string token, string value,DateTime dt)
+        public static bool SetStringTime(string token, string value, DateTime dt)
         {
-            if (client.Password == null)
-            {
-                SetPassword();
-            }
             return client.Set<String>(token, value, dt);
         }
 
@@ -114,12 +85,8 @@ namespace Neil.Commom
         /// </summary>
         /// <param name="keys"></param>
         /// <returns></returns>
-        public static int DelKey(params string[] keys) 
+        public static int DelKey(params string[] keys)
         {
-            if (client.Password == null)
-            {
-                SetPassword();
-            }
             return client.Del(keys);
         }
 
@@ -130,11 +97,7 @@ namespace Neil.Commom
         /// <param name="seconds">过期时间，单位：秒</param>
         public static int Expire(string token, int seconds)
         {
-            if (client.Password == null)
-            {
-                SetPassword();
-            }
-           return client.Expire(token, seconds);
+            return client.Expire(token, seconds);
         }
         #endregion
     }

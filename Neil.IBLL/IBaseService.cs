@@ -1,6 +1,8 @@
-﻿using System;
+﻿using Neil.Model.OrderModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -14,6 +16,17 @@ namespace Neil.IBLL
         IQueryable<T> LoadEntitiesWhere<S>(
             System.Linq.Expressions.Expression<Func<T, bool>> lambdaWhere,
             System.Linq.Expressions.Expression<Func<T, S>> orderByWhere, bool isAsc, out int totalCount, int pageIndex, int pageSize);
+
+        /// <summary>
+        /// https://www.cnblogs.com/yannis/p/3584818.html 动态组合多排序字段
+        /// </summary>
+        /// <param name="condition"></param>
+        /// <param name="pageIndex"></param>
+        /// <param name="pageSize"></param>
+        /// <param name="total"></param>
+        /// <param name="orderByExpression"></param>
+        /// <returns></returns>
+        IQueryable<T> GetAllEntity(Expression<Func<T, bool>> condition, int pageIndex, int pageSize, out long total, params OrderModelField[] orderByExpression);
 
         //添加
         bool AddEntities(T model);

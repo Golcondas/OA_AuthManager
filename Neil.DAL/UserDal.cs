@@ -14,6 +14,10 @@ namespace Neil.DAL
 {
     public class UserDal : BasaDal<UserInfo>, IUserDal
     {
-        
+        IQueryable<UserInfo> IBaseDal<UserInfo>.GetAllEntity(System.Linq.Expressions.Expression<Func<UserInfo, bool>> condition, int pageIndex, int pageSize, out long total, params Model.OrderModel.OrderModelField[] orderByExpression)
+        {
+            throw new NotImplementedException();
+        }
+
     }
 }

@@ -71,7 +71,7 @@ namespace Neil.Web.Controllers
             if (getUserInfo != null && getUserInfo.UName == userName)
             {
                 String ssesionid = Guid.NewGuid() + "";
-                Commom.MemCachedHelper.SetTime(ssesionid, Commom.JsonHelper.ObjectToJson(getUserInfo), DateTime.Today.AddDays(30));
+                RedisHelper.SetStringTime(ssesionid, Commom.JsonHelper.ObjectToJson(getUserInfo), DateTime.Today.AddDays(30));
                 Response.Cookies["neilCookie"].Value = ssesionid;
                 result.issuccess = true;
                 result.message = "登录成功";
