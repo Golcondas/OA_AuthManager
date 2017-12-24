@@ -34,6 +34,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DLL\log4net.dll</HintPath>
+    </Reference>
     <Reference Include="Memcached.ClientLibrary">
       <HintPath>..\DLL\Memcached.ClientLibrary.dll</HintPath>
     </Reference>
@@ -63,6 +67,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConfigKey\CookieKey.cs" />
     <Compile Include="JsonHelper.cs" />
     <Compile Include="MemCachedHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

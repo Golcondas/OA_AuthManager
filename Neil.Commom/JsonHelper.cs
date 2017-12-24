@@ -11,6 +11,7 @@ namespace Neil.Commom
 {
     public class JsonHelper
     {
+        private static log4net.ILog log = log4net.LogManager.GetLogger("JsonHelper");
         // 从一个对象信息生成Json串
         public static string ObjectToJson(object obj)
         {
@@ -26,7 +27,17 @@ namespace Neil.Commom
         // 从一个Json串生成对象信息
         public static T JsonToObject<T>(string jsonString)
         {
-            return JsonConvert.DeserializeObject<T>(jsonString);
+            try
+            {
+                return JsonConvert.DeserializeObject<T>(jsonString);
+            }
+            catch (Exception ex)
+            {
+
+                log.Error("JsonToObject 报错：Ex:" + ex);
+                return default(T);
+            }
+            
             //DataContractJsonSerializer serializer = new DataContractJsonSerializer(obj.GetType());
             //MemoryStream mStream = new MemoryStream(Encoding.UTF8.GetBytes(jsonString));
             //return serializer.ReadObject(mStream);

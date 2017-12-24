@@ -27,9 +27,9 @@ namespace Neil.Model.ViewModel
             userInfoModel.ID = model.ID;
             userInfoModel.UName = model.UName;
             userInfoModel.UPwd = model.UPwd;
-            userInfoModel.SubTime = model.SubTime.ToString("yyyy-MM-DD hh:mm:ss");
+            userInfoModel.SubTime = model.SubTime.ToString("yyyy-MM-dd hh:mm:ss");
             userInfoModel.DelFlag = model.DelFlag;
-            userInfoModel.ModifiedOn = model.ModifiedOn.ToString("yyyy-MM-DD hh:mm:ss");
+            userInfoModel.ModifiedOn = model.ModifiedOn.ToString("yyyy-MM-dd hh:mm:ss");
             userInfoModel.Remark = model.Remark;
             userInfoModel.Sort = model.Sort;
             return userInfoModel;

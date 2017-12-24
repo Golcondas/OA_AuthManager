@@ -1,4 +1,5 @@
 ﻿using Neil.Commom;
+using Neil.Commom.ConfigKey;
 using Neil.Model;
 using System;
 using System.Collections.Generic;
@@ -10,19 +11,35 @@ namespace Neil.Web.Controllers
 {
     public class BaseController : Controller
     {
+        public UserInfo userInfoBase { get; set; }
+
         /// <summary>
         /// 方法过滤器的方法
         /// </summary>
         /// <param name="filterContext"></param>
         protected override void OnActionExecuted(ActionExecutedContext filterContext)
         {
-            string sessionid = Request.Cookies["neilCookie"] + "";
-            var userInfo = RedisHelper.GetString(sessionid);
-            if (string.IsNullOrWhiteSpace(userInfo))
+            bool isExit = false;
+
+            if (Request.Cookies[CookieKey.neilCookie]!= null)
             {
-                UserInfo model = Neil.Commom.JsonHelper.JsonToObject<UserInfo>(userInfo);
+                var sessionid = Request.Cookies[CookieKey.neilCookie].Value;
+                var userInfo = RedisHelper.GetString(sessionid);
+                if (!String.IsNullOrEmpty(userInfo))
+                {
+                    userInfoBase = Neil.Commom.JsonHelper.JsonToObject<UserInfo>(userInfo);
+                    if (userInfoBase != null)
+                    {
+                        isExit = true;
+                    }
+                }
             }
+            if (isExit)
+            {
+                filterContext.HttpContext.Response.Redirect("/admin");
+            }
+
             base.OnActionExecuted(filterContext);
-        } 
+        }
     }
 }

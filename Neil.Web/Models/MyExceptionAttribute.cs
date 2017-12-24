@@ -14,7 +14,7 @@ namespace Neil.Web.Models
         public override void OnException(ExceptionContext filterContext)
         {
             exceptionQueue.Enqueue(filterContext.Exception);
-            string url = "/Error.html";
+            string url = "~/Error.html";
             filterContext.HttpContext.Response.Redirect(url);
             base.OnException(filterContext);
         }
