@@ -23,6 +23,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpringNetDemo", "SpringNetD
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DLL", "DLL", "{564876C3-95E8-4953-8F28-A1615C5DC841}"
 	ProjectSection(SolutionItems) = preProject
+		D:\My Download\GoogleDownload\aliyun_oss_dotnet_sdk_2_7_0\bin\Aliyun.OSS.dll = D:\My Download\GoogleDownload\aliyun_oss_dotnet_sdk_2_7_0\bin\Aliyun.OSS.dll
 		DLL\Common.Logging.dll = DLL\Common.Logging.dll
 		DLL\ICSharpCode.SharpZipLib.dll = DLL\ICSharpCode.SharpZipLib.dll
 		DLL\log4net.dll = DLL\log4net.dll

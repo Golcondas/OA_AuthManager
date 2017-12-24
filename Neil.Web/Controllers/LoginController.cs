@@ -64,7 +64,7 @@ namespace Neil.Web.Controllers
             if (!string.Equals(code.Trim(),validateCode, StringComparison.InvariantCultureIgnoreCase))
             {
                 result.message = "验证码错误";
-                return Json(result);
+                return Json(result, JsonRequestBehavior.AllowGet);
             }
 
             var getUserInfo = userInfoService.LoadEntities(t => t.UName == userName && t.UPwd == password).FirstOrDefault();
@@ -80,7 +80,7 @@ namespace Neil.Web.Controllers
             {
                 result.message = "登录失败";
             }
-            return Json(result);
+            return Json(result,JsonRequestBehavior.AllowGet);
         }
 
     }

@@ -24,9 +24,9 @@ namespace Neil.Commom
             //return Encoding.UTF8.GetString(dataBytes);
         }
         // 从一个Json串生成对象信息
-        public static object JsonToObject(string jsonString)
+        public static T JsonToObject<T>(string jsonString)
         {
-            return JsonConvert.DeserializeObject(jsonString);
+            return JsonConvert.DeserializeObject<T>(jsonString);
             //DataContractJsonSerializer serializer = new DataContractJsonSerializer(obj.GetType());
             //MemoryStream mStream = new MemoryStream(Encoding.UTF8.GetBytes(jsonString));
             //return serializer.ReadObject(mStream);

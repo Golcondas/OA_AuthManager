@@ -1625,6 +1625,7 @@
     <Content Include="Content\Hui\static\h-ui.admin\scss\H-ui.admin.scss" />
     <Content Include="Content\Hui\static\h-ui.admin\scss\H-ui.login.scss" />
     <Content Include="Content\Hui\temp\Thumbs.db" />
+    <None Include="Properties\PublishProfiles\neil.pubxml" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="HuiUi\admin\404.html" />
     <Content Include="HuiUi\admin\admin-add.html" />
