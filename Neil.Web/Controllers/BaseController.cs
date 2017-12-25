@@ -36,7 +36,7 @@ namespace Neil.Web.Controllers
             }
             if (isExit)
             {
-                filterContext.HttpContext.Response.Redirect("/admin");
+                filterContext.HttpContext.Response.Redirect("~/HuiUi/admin/index.html");
             }
 
             base.OnActionExecuted(filterContext);
