@@ -1,5 +1,6 @@
 ﻿using Neil.Commom;
 using Neil.Commom.ConfigKey;
+using Neil.Model;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -17,6 +18,11 @@ namespace Neil.Web.Controllers
         // GET: /Login/
 
         public ActionResult Index()
+        {
+            return View();
+        }
+
+        public ActionResult FindPwd() 
         {
             return View();
         }
@@ -110,5 +116,39 @@ namespace Neil.Web.Controllers
             return Json(result, JsonRequestBehavior.AllowGet);
         }
 
+        public ActionResult UpdateUserPwd(string name,string email) 
+        {
+            ResponseResult result = new ResponseResult();
+            string newId = Guid.NewGuid().ToString();
+            var userInfo = userInfoService.LoadEntities(t => t.UName == name && t.Email == email).FirstOrDefault();
+            if (userInfo != null)
+            {
+                string newPwd = Guid.NewGuid().ToString().Substring(0, 8);
+                //将产生的新密码加密以后替换用户的原来的旧密码.但是发送到用户邮箱中的密码必须是明文.
+                //userInfo.ID = 1;
+                //userInfo.UPwd = newPwd;
+                //userInfo.ModifiedOn = DateTime.Now;
+                //var result2 = userInfoService.UpdateEntities(userInfo, "UPwd", "ModifiedOn");
+                UserInfo model = new UserInfo();
+                model.ID = 1;
+                model.UName = name;
+                model.UPwd = newPwd;
+                model.Remark = "";
+                model.DelFlag = 0;
+                model.Sort = 0 + "";
+                model.ModifiedOn = DateTime.Now;
+                var result3 = userInfoService.UpdateEntities(model, "UName", "UPwd", "Remark", "ModifiedOn");
+                userInfoService.FindUserPwd(userInfo);
+                result.issuccess = true;
+                result.message = "修改密码成功";
+                return Json(result, JsonRequestBehavior.AllowGet);
+            }
+            else 
+            {
+                result.message = "修改密码失败";
+                return Json(result, JsonRequestBehavior.AllowGet);
+            }
+        }
+           
     }
 }

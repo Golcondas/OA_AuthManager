@@ -72,6 +72,7 @@
     <Compile Include="MemCachedHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RedisHelper.cs" />
+    <Compile Include="ResponseResult.cs" />
     <Compile Include="ResultData.cs" />
     <Compile Include="ValidateCode.cs" />
   </ItemGroup>

@@ -16,6 +16,7 @@ namespace Neil.Model.ViewModel
         public String ModifiedOn { get; set; }
         public string Remark { get; set; }
         public string Sort { get; set; }
+        public String Email { get; set; }
 
         public static UserInfoModel GetUserInfo(UserInfo model) 
         {
@@ -32,6 +33,7 @@ namespace Neil.Model.ViewModel
             userInfoModel.ModifiedOn = model.ModifiedOn.ToString("yyyy-MM-dd hh:mm:ss");
             userInfoModel.Remark = model.Remark;
             userInfoModel.Sort = model.Sort;
+            userInfoModel.Email = model.Email;
             return userInfoModel;
         }
 

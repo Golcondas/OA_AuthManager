@@ -11,6 +11,7 @@ namespace Neil.Web.Controllers
 {
     public class BaseController : Controller
     {
+        private static log4net.ILog log = log4net.LogManager.GetLogger("BaseController");
         public UserInfo userInfoBase { get; set; }
 
         /// <summary>
@@ -21,7 +22,7 @@ namespace Neil.Web.Controllers
         {
             bool isExit = false;
 
-            if (Request.Cookies[CookieKey.neilCookie]!= null)
+            if (Request.Cookies[CookieKey.neilCookie] != null)
             {
                 var sessionid = Request.Cookies[CookieKey.neilCookie].Value;
                 var userInfo = RedisHelper.GetString(sessionid);
@@ -36,10 +37,22 @@ namespace Neil.Web.Controllers
             }
             if (isExit)
             {
-                filterContext.HttpContext.Response.Redirect("~/HuiUi/admin/index.html");
+
+                filterContext.HttpContext.Response.Clear();//这里是关键，清除在返回前已经设置好的标头信息，这样后面的跳转才不会报错
+                filterContext.HttpContext.Response.BufferOutput = true;//设置输出缓冲
+                if (!filterContext.HttpContext.Response.IsRequestBeingRedirected)//在跳转之前做判断,防止重复
+                {
+                    filterContext.HttpContext.Response.Redirect("~/Admin/index.html", true);
+                }
             }
 
             base.OnActionExecuted(filterContext);
         }
+
+        public void RedirectUrl(string url)
+        {
+
+        }
     }
+
 }

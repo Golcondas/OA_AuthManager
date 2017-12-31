@@ -10,5 +10,7 @@ namespace Neil.IBLL
     public interface IUserInfoService : IBaseService<UserInfo>
     {
         bool DeleteEnities(List<int> list);
+
+        void FindUserPwd(UserInfo userInfo);
     }
 }

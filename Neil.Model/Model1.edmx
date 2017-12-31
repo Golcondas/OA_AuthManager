@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="OAModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="OAModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityContainer Name="OAModelStoreContainer">
           <EntitySet Name="UserInfo" EntityType="OAModel.Store.UserInfo" store:Type="Tables" Schema="dbo" />
         </EntityContainer>
@@ -13,13 +13,14 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="UName" Type="nvarchar" MaxLength="255" />
-          <Property Name="UPwd" Type="nvarchar" Nullable="false" MaxLength="255" />
-          <Property Name="SubTime" Type="datetime" Nullable="false" />
-          <Property Name="DelFlag" Type="int" Nullable="false" />
-          <Property Name="ModifiedOn" Type="datetime" Nullable="false" />
-          <Property Name="Remark" Type="nvarchar(max)"/>
-          <Property Name="Sort" Type="nvarchar(max)" />
+          <Property Name="UName" Type="nvarchar" MaxLength="50" />
+          <Property Name="UPwd" Type="nvarchar" MaxLength="1000" />
+          <Property Name="SubTime" Type="datetime" />
+          <Property Name="DelFlag" Type="int" />
+          <Property Name="ModifiedOn" Type="datetime" />
+          <Property Name="Remark" Type="nvarchar" />
+          <Property Name="Sort" Type="nvarchar" MaxLength="50" />
+          <Property Name="Email" Type="nvarchar" MaxLength="200" />
         </EntityType>
       </Schema>
     </edmx:StorageModels>
@@ -34,13 +35,14 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
-          <Property Name="UName" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
-          <Property Name="UPwd" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
-          <Property Name="SubTime" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="DelFlag" Type="Int32" Nullable="false" />
-          <Property Name="ModifiedOn" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="Remark" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
-          <Property Name="Sort" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="UName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="UPwd" Type="String" MaxLength="1000" Unicode="true" FixedLength="false" />
+          <Property Name="SubTime" Type="DateTime" Precision="3" />
+          <Property Name="DelFlag" Type="Int32" />
+          <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+          <Property Name="Remark" Type="String" MaxLength="4000" Unicode="true" FixedLength="false" />
+          <Property Name="Sort" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Email" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -59,6 +61,7 @@
                 <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
                 <ScalarProperty Name="Remark" ColumnName="Remark" />
                 <ScalarProperty Name="Sort" ColumnName="Sort" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -77,8 +80,7 @@
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
         <DesignerProperty Name="EnablePluralization" Value="False" />
-        <DesignerProperty Name="IncludeForeignKeysInModel" Value="False" />
-        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
       </DesignerInfoPropertySet>
     </Options>
     <!-- Diagram content (shape and connector positions) -->

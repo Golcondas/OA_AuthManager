@@ -17,10 +17,11 @@ namespace Neil.Model
         public int ID { get; set; }
         public string UName { get; set; }
         public string UPwd { get; set; }
-        public System.DateTime SubTime { get;   set;   }
+        public System.DateTime SubTime { get; set; }
         public int DelFlag { get; set; }
         public System.DateTime ModifiedOn { get; set; }
         public string Remark { get; set; }
         public string Sort { get; set; }
+        public string Email { get; set; }
     }
 }

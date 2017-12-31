@@ -20,7 +20,10 @@ namespace Neil.DAL
         //查找
         public IQueryable<T> LoadEntities(System.Linq.Expressions.Expression<Func<T, bool>> lambdaWehre)
         {
-            return db.Set<T>().Where<T>(lambdaWehre);
+            //EntityState.Unchanged ObjectStateManager 中已存在具有同一键的对象。ObjectSta
+
+            //ObjectStateManager 中已存在具有同一键的对象。ObjectStateManager 无法跟踪具有相同键的多个对象。
+            return db.Set<T>().AsNoTracking().Where<T>(lambdaWehre);
         }
 
         //按条件查找排序分页
@@ -28,7 +31,7 @@ namespace Neil.DAL
             System.Linq.Expressions.Expression<Func<T, bool>> lambdaWhere,
             System.Linq.Expressions.Expression<Func<T, S>> orderByWhere, bool isAsc, out int totalCount, int pageIndex, int pageSize)
         {
-            var temp = db.Set<T>().Where(lambdaWhere);
+            var temp = db.Set<T>().AsNoTracking().Where(lambdaWhere);
             totalCount = temp.Count();
             if (isAsc)
             {
@@ -49,7 +52,7 @@ namespace Neil.DAL
         public IList<T> GetAllEntity(Expression<Func<T, bool>> condition, int pageIndex, int pageSize, out long total, params OrderModelField[] orderByExpression)
         {
             //条件过滤
-            var query = db.Set<T>().Where(condition);
+            var query = db.Set<T>().AsNoTracking().Where(condition);
 
             //创建表达式变量参数
             var parameter = Expression.Parameter(typeof(T), "o");
@@ -94,6 +97,19 @@ namespace Neil.DAL
         //更新
         public bool UpdateEntities(T model, params string[] proNames)
         {
+            /*
+             * Product attachedProduct = set.Local.SingleOrDefault(p => p.Id == item.Id);
+                    //如果已经被上下文追踪
+                    if (attachedProduct != null)
+                    {
+                        var attachedEntry = db.Entry(attachedProduct);
+                        attachedEntry.CurrentValues.SetValues(item);
+                    }
+             * 
+             * 
+             * 
+            */
+
             DbEntityEntry entry = db.Entry<T>(model);
             entry.State = EntityState.Unchanged;
             foreach (string proName in proNames)

@@ -43,6 +43,7 @@ namespace Neil.Web.Controllers
                                UPwd = u.UPwd,
                                Remark = u.Remark,
                                SubTime = u.SubTime,
+                               Email=u.Email,
                            };
                 var result = temp.ToList();
                 return Json(new { rows = temp.ToList(), total = totalCount }, JsonRequestBehavior.AllowGet);
