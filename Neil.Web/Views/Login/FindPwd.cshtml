@@ -1,0 +1,65 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>找回密码</title>
+</head>
+<body>
+    <div>
+        <table>
+            <tr>
+                <td>用户名:</td>
+                <td>
+                    <input type="text" id="name" /></td>
+            </tr>
+            <tr>
+                <td>邮箱</td>
+                <td>
+                    <input type="text" id="email" /></td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="button" onclick="findPwd(); return false;" value="找回密码" /></td>
+            </tr>
+        </table>
+    </div>
+</body>
+<script type="text/javascript" src="~/HuiUi/admin/lib/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="~/HuiUi/admin/static/h-ui/js/H-ui.min.js"></script>
+<script type="text/javascript">
+    $(function () {
+    });
+
+    function findPwd() {
+
+        var parm = {
+            name: $("#name").val(),
+            email: $("#email").val()
+        };
+        $.ajax({
+            url: "/Login/UpdateUserPwd",
+            type: "post",
+            data: parm,
+            dataType: "json",
+            success: function (data) {
+                if (data.issuccess) {
+                    modalalertdemo("修改成功");
+                } else {
+                    ClickRemoveChangeCode();
+                    modalalertdemo(data.message);
+
+                }
+            }
+        });
+    }
+
+    function modalalertdemo(info) {
+        $.Huimodalalert(info, 2000);
+    }
+</script>
+</html>

@@ -180,6 +180,11 @@
     </Compile>
     <Compile Include="Models\MyExceptionAttribute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TextTemplate1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TextTemplate1.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="BootStrap页面设计\bs1.html" />
@@ -2824,6 +2829,10 @@
     <Content Include="Views\HuiUi\admin\static\h-ui.admin\scss\H-ui.admin.scss" />
     <Content Include="Views\HuiUi\admin\static\h-ui.admin\scss\H-ui.login.scss" />
     <Content Include="Views\HuiUi\admin\temp\Thumbs.db" />
+    <Content Include="TextTemplate1.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>TextTemplate1.cs</LastGenOutput>
+    </Content>
     <None Include="Views\Login\Index.cshtml" />
     <Content Include="Views\HuiUi\admin\404.html" />
     <Content Include="Views\HuiUi\admin\admin-add.html" />
@@ -3971,6 +3980,9 @@
       <Project>{df51bc6e-0c35-4b2e-84af-4cf7c2b0ad24}</Project>
       <Name>Neil.Model</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

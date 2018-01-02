@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Neil.DalAbstratFactory
 {
-    public class DbSession : IDbSession
+    public partial class DbSession : IDbSession
     {
         public IUserDal _UserDal;
         public IUserDal GetUserDal 

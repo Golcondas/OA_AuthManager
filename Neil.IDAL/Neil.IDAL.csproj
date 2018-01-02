@@ -43,6 +43,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IDal.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>IDal.tt</DependentUpon>
+    </Compile>
     <Compile Include="IBaseDal.cs" />
     <Compile Include="IUserDal.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -52,6 +57,15 @@
       <Project>{df51bc6e-0c35-4b2e-84af-4cf7c2b0ad24}</Project>
       <Name>Neil.Model</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="IDal.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>IDal.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

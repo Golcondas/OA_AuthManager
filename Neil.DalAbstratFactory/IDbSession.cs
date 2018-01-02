@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Neil.DalAbstratFactory
 {
-    public interface IDbSession
+    public partial interface IDbSession
     {
         IUserDal GetUserDal { get; set; }
         bool SaveChangesDbSession();

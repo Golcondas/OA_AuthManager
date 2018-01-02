@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Neil.BLL
 {
-    public class UserInfoSerivce : BaseService<UserInfo>, IUserInfoService
+    public partial class UserInfoSerivce : BaseService<UserInfo>, IUserInfoService
     {
         public override void SetCurrentDal()
         {

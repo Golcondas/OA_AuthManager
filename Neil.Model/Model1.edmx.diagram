@@ -6,6 +6,9 @@
     <edmx:Diagrams>
       <Diagram DiagramId="77c0bc23d4af44fabc93343b09f34d09" Name="关系图1">
         <EntityTypeShape EntityType="OAModel.UserInfo" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OAModel.Role" Width="1.5" PointX="2.625" PointY="0.625" />
+        <EntityTypeShape EntityType="OAModel.ActionInfo" Width="1.5" PointX="4.625" PointY="0.625" />
+        <EntityTypeShape EntityType="OAModel.R_User_Action" Width="1.5" PointX="6.75" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

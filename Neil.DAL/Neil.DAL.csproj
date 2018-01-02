@@ -47,7 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BasaDal.cs" />
+    <Compile Include="BaseDal.cs" />
     <Compile Include="UserDal.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -64,6 +64,15 @@
       <Project>{df51bc6e-0c35-4b2e-84af-4cf7c2b0ad24}</Project>
       <Name>Neil.Model</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Dal.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Dal.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

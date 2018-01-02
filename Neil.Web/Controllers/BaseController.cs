@@ -42,7 +42,7 @@ namespace Neil.Web.Controllers
                 filterContext.HttpContext.Response.BufferOutput = true;//设置输出缓冲
                 if (!filterContext.HttpContext.Response.IsRequestBeingRedirected)//在跳转之前做判断,防止重复
                 {
-                    filterContext.HttpContext.Response.Redirect("~/Admin/index.html", true);
+                    filterContext.HttpContext.Response.Redirect("~/HuiUi/Admin/index.html", true);
                 }
             }
 

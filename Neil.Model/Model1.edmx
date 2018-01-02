@@ -4,10 +4,54 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="OAModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="OAModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityContainer Name="OAModelStoreContainer">
+          <EntitySet Name="ActionInfo" EntityType="OAModel.Store.ActionInfo" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="R_User_Action" EntityType="OAModel.Store.R_User_Action" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Role" EntityType="OAModel.Store.Role" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="UserInfo" EntityType="OAModel.Store.UserInfo" store:Type="Tables" Schema="dbo" />
         </EntityContainer>
+        <EntityType Name="ActionInfo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Url" Type="nvarchar" MaxLength="1000" />
+          <Property Name="HttpMethod" Type="nvarchar" MaxLength="1000" />
+          <Property Name="ActionMethodName" Type="nvarchar" MaxLength="1000" />
+          <Property Name="ControllerName" Type="nvarchar" MaxLength="1000" />
+          <Property Name="ActionInfoName" Type="nvarchar" MaxLength="1000" />
+          <Property Name="SortName" Type="nvarchar" MaxLength="1000" />
+          <Property Name="ActionTypeEnum" Type="int" />
+          <Property Name="MenuIcon" Type="nvarchar" MaxLength="1000" />
+          <Property Name="IconHeight" Type="int" />
+          <Property Name="IconWeight" Type="int" />
+          <Property Name="DelFlag" Type="int" />
+          <Property Name="Created" Type="datetime" />
+          <Property Name="Modified" Type="datetime" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="100" />
+          <Property Name="ModifiedBy" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="R_User_Action">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="UseInforID" Type="int" />
+          <Property Name="ActionInfoID" Type="int" />
+          <Property Name="IsPass" Type="int" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="RoleName" Type="nvarchar" MaxLength="200" />
+          <Property Name="DelFlag" Type="bigint" />
+          <Property Name="Created" Type="datetime" />
+          <Property Name="Modified" Type="datetime" />
+          <Property Name="Sort" Type="int" />
+        </EntityType>
         <EntityType Name="UserInfo">
           <Key>
             <PropertyRef Name="ID" />
@@ -22,14 +66,16 @@
           <Property Name="Sort" Type="nvarchar" MaxLength="50" />
           <Property Name="Email" Type="nvarchar" MaxLength="200" />
         </EntityType>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="OAModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="OAEntities" p1:LazyLoadingEnabled="true">
           <EntitySet Name="UserInfo" EntityType="OAModel.UserInfo" />
-        </EntityContainer>
+          <EntitySet Name="Role" EntityType="OAModel.Role" />
+          <EntitySet Name="ActionInfo" EntityType="OAModel.ActionInfo" />
+          <EntitySet Name="R_User_Action" EntityType="OAModel.R_User_Action" />
+          </EntityContainer>
         <EntityType Name="UserInfo">
           <Key>
             <PropertyRef Name="ID" />
@@ -43,6 +89,47 @@
           <Property Name="Remark" Type="String" MaxLength="4000" Unicode="true" FixedLength="false" />
           <Property Name="Sort" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
           <Property Name="Email" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="RoleName" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="Int64" Name="DelFlag" />
+          <Property Type="DateTime" Name="Created" Precision="3" />
+          <Property Type="DateTime" Name="Modified" Precision="3" />
+          <Property Type="Int32" Name="Sort" />
+        </EntityType>
+        <EntityType Name="ActionInfo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Url" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="HttpMethod" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ActionMethodName" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ControllerName" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ActionInfoName" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="SortName" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="ActionTypeEnum" />
+          <Property Type="String" Name="MenuIcon" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="IconHeight" />
+          <Property Type="Int32" Name="IconWeight" />
+          <Property Type="DateTime" Name="Created" Precision="3" />
+          <Property Type="DateTime" Name="Modified" Precision="3" />
+          <Property Type="String" Name="CreatedBy" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ModifiedBy" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="DelFlag" />
+        </EntityType>
+        <EntityType Name="R_User_Action">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="Int32" Name="UseInforID" />
+          <Property Type="Int32" Name="ActionInfoID" />
+          <Property Type="Int32" Name="IsPass" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -65,7 +152,51 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-        </EntityContainerMapping>
+          <EntitySetMapping Name="Role">
+            <EntityTypeMapping TypeName="OAModel.Role">
+              <MappingFragment StoreEntitySet="Role">
+                <ScalarProperty Name="Sort" ColumnName="Sort" />
+                <ScalarProperty Name="Modified" ColumnName="Modified" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="DelFlag" ColumnName="DelFlag" />
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ActionInfo">
+            <EntityTypeMapping TypeName="IsTypeOf(OAModel.ActionInfo)">
+              <MappingFragment StoreEntitySet="ActionInfo">
+                <ScalarProperty Name="DelFlag" ColumnName="DelFlag" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="HttpMethod" ColumnName="HttpMethod" />
+                <ScalarProperty Name="ActionMethodName" ColumnName="ActionMethodName" />
+                <ScalarProperty Name="ControllerName" ColumnName="ControllerName" />
+                <ScalarProperty Name="ActionInfoName" ColumnName="ActionInfoName" />
+                <ScalarProperty Name="SortName" ColumnName="SortName" />
+                <ScalarProperty Name="ActionTypeEnum" ColumnName="ActionTypeEnum" />
+                <ScalarProperty Name="MenuIcon" ColumnName="MenuIcon" />
+                <ScalarProperty Name="IconHeight" ColumnName="IconHeight" />
+                <ScalarProperty Name="IconWeight" ColumnName="IconWeight" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="Modified" ColumnName="Modified" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="R_User_Action">
+            <EntityTypeMapping TypeName="OAModel.R_User_Action">
+              <MappingFragment StoreEntitySet="R_User_Action">
+                <ScalarProperty Name="IsPass" ColumnName="IsPass" />
+                <ScalarProperty Name="ActionInfoID" ColumnName="ActionInfoID" />
+                <ScalarProperty Name="UseInforID" ColumnName="UseInforID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>

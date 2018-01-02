@@ -26,5 +26,8 @@ namespace Neil.Model
         }
     
         public DbSet<UserInfo> UserInfo { get; set; }
+        public DbSet<Role> Role { get; set; }
+        public DbSet<ActionInfo> ActionInfo { get; set; }
+        public DbSet<R_User_Action> R_User_Action { get; set; }
     }
 }

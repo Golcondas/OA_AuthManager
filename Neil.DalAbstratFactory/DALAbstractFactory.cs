@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Neil.DalAbstratFactory
 {
-    public class DALAbstractFactory
+    public partial class DALAbstractFactory
     {
         public static readonly string assemblyFullName = ConfigurationManager.ConnectionStrings["dalFullName"].ConnectionString;
         public static readonly string assembly = ConfigurationManager.ConnectionStrings["assemblyName"].ConnectionString;
@@ -21,6 +21,12 @@ namespace Neil.DalAbstratFactory
         }
 
         public static object GetIntence(string assemblyFullName, string assembly)
+        {
+            var assemblyName = Assembly.Load(assembly);
+            return assemblyName.CreateInstance(assemblyFullName);
+        }
+
+        public static object CreateInstance(string assemblyFullName, string assembly)
         {
             var assemblyName = Assembly.Load(assembly);
             return assemblyName.CreateInstance(assemblyFullName);
