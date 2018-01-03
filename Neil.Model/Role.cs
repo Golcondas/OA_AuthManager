@@ -16,9 +16,9 @@ namespace Neil.Model
     {
         public int ID { get; set; }
         public string RoleName { get; set; }
-        public Nullable<long> DelFlag { get; set; }
-        public Nullable<System.DateTime> Created { get; set; }
-        public Nullable<System.DateTime> Modified { get; set; }
-        public Nullable<int> Sort { get; set; }
+        public long DelFlag { get; set; }
+        public System.DateTime Created { get; set; }
+        public System.DateTime Modified { get; set; }
+        public int Sort { get; set; }
     }
 }

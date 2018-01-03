@@ -190,12 +190,34 @@ $(function(){
 		focusCleanup:true,
 		success:"valid",
 		submitHandler:function(form){
+		    AddRole();
 			$(form).ajaxSubmit();
 			var index = parent.layer.getFrameIndex(window.name);
 			parent.layer.close(index);
 		}
 	});
+
+
 });
+function AddRole() {
+    $.ajax({
+        url: "/Role/AddRole",
+        data: {
+            role: $("#roleName").val()
+        },
+        type: "post",
+        success: function (d) {
+            if (d.issuccess) {
+                modalalertdemo("成功");
+            } else {
+                modalalertdemo("失败");
+            }
+        }
+    });
+}
+function modalalertdemo(info) {
+    $.Huimodalalert(info, 2000);
+}
 </script>
 <!--/请在上方写此页面业务相关的脚本-->
 </body>

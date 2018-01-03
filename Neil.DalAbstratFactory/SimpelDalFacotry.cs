@@ -1,4 +1,4 @@
-﻿
+﻿ 
 
 using Neil.IDAL;
 using Neil.Model;
@@ -15,53 +15,60 @@ namespace Neil.DalAbstratFactory
 {
     public partial class DALAbstractFactory
     {
-        public static IActionInfoDal CreateActionInfoDal()
+      
+   
+		
+	    public static IActionInfoDal CreateActionInfoDal()
         {
+		
+            string classFulleName = ConfigurationManager.ConnectionStrings["dalFullName"].ConnectionString + ".ActionInfoDal";
 
-            string classFulleName = ConfigurationManager.AppSettings["dalFullName"] + ".ActionInfoDal";
-
+		
             //object obj = Assembly.Load(ConfigurationManager.AppSettings["assemblyName"]).CreateInstance(classFulleName, true);
-            var obj = CreateInstance(classFulleName, ConfigurationManager.AppSettings["assemblyName"]);
+            var obj  = CreateInstance(classFulleName,ConfigurationManager.ConnectionStrings["assemblyName"].ConnectionString);
+
+
             return obj as IActionInfoDal;
         }
-
-        public static IR_User_ActionDal CreateR_User_ActionDal()
+		
+	    public static IR_User_ActionDal CreateR_User_ActionDal()
         {
+		
+            string classFulleName = ConfigurationManager.ConnectionStrings["dalFullName"].ConnectionString + ".R_User_ActionDal";
 
-            string classFulleName = ConfigurationManager.AppSettings["dalFullName"] + ".R_User_ActionDal";
-
-
+		
             //object obj = Assembly.Load(ConfigurationManager.AppSettings["assemblyName"]).CreateInstance(classFulleName, true);
-            var obj = CreateInstance(classFulleName, ConfigurationManager.AppSettings["assemblyName"]);
+            var obj  = CreateInstance(classFulleName,ConfigurationManager.ConnectionStrings["assemblyName"].ConnectionString);
 
 
             return obj as IR_User_ActionDal;
         }
-
-        public static IRoleDal CreateRoleDal()
+		
+	    public static IRoleDal CreateRoleDal()
         {
+		
+            string classFulleName = ConfigurationManager.ConnectionStrings["dalFullName"].ConnectionString + ".RoleDal";
 
-            string classFulleName = ConfigurationManager.AppSettings["dalFullName"] + ".RoleDal";
-
-
+		
             //object obj = Assembly.Load(ConfigurationManager.AppSettings["assemblyName"]).CreateInstance(classFulleName, true);
-            var obj = CreateInstance(classFulleName, ConfigurationManager.AppSettings["assemblyName"]);
+            var obj  = CreateInstance(classFulleName,ConfigurationManager.ConnectionStrings["assemblyName"].ConnectionString);
 
 
             return obj as IRoleDal;
         }
-
-        public static IUserInfoDal CreateUserInfoDal()
+		
+	    public static IUserInfoDal CreateUserInfoDal()
         {
+		
+            string classFulleName = ConfigurationManager.ConnectionStrings["dalFullName"].ConnectionString + ".UserInfoDal";
 
-            string classFulleName = ConfigurationManager.AppSettings["dalFullName"] + ".UserInfoDal";
-
-
+		
             //object obj = Assembly.Load(ConfigurationManager.AppSettings["assemblyName"]).CreateInstance(classFulleName, true);
-            var obj = CreateInstance(classFulleName, ConfigurationManager.AppSettings["assemblyName"]);
+            var obj  = CreateInstance(classFulleName,ConfigurationManager.ConnectionStrings["assemblyName"].ConnectionString);
+
 
             return obj as IUserInfoDal;
         }
-    }
-
+	}
+	
 }

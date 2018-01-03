@@ -15,7 +15,7 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="Url" Type="nvarchar" MaxLength="1000" />
           <Property Name="HttpMethod" Type="nvarchar" MaxLength="1000" />
           <Property Name="ActionMethodName" Type="nvarchar" MaxLength="1000" />
@@ -36,7 +36,7 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="UseInforID" Type="int" />
           <Property Name="ActionInfoID" Type="int" />
           <Property Name="IsPass" Type="int" />
@@ -45,7 +45,7 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="RoleName" Type="nvarchar" MaxLength="200" />
           <Property Name="DelFlag" Type="bigint" />
           <Property Name="Created" Type="datetime" />
@@ -94,7 +94,7 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="Int32" Name="ID" Nullable="false" p1:StoreGeneratedPattern="Identity" />
           <Property Type="String" Name="RoleName" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Type="Int64" Name="DelFlag" />
           <Property Type="DateTime" Name="Created" Precision="3" />
@@ -105,7 +105,7 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="Int32" Name="ID" Nullable="false" p1:StoreGeneratedPattern="Identity" />
           <Property Type="String" Name="Url" MaxLength="1000" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="HttpMethod" MaxLength="1000" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="ActionMethodName" MaxLength="1000" FixedLength="false" Unicode="true" />
@@ -126,7 +126,7 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="Int32" Name="ID" Nullable="false" p1:StoreGeneratedPattern="Identity" />
           <Property Type="Int32" Name="UseInforID" />
           <Property Type="Int32" Name="ActionInfoID" />
           <Property Type="Int32" Name="IsPass" />

@@ -9,9 +9,15 @@
     <property name="userInfoService" ref="userInfoServiceObject" />
   </object>
 
+  <object type="Neil.Web.Controllers.RoleController, Neil.Web" singleton="false" >
+    <property name="roleService" ref="roleServiceObject" />
+  </object>
+  
   <object type="Neil.BLL.UserInfoSerivce, Neil.BLL" singleton="false" name="userInfoServiceObject" >
   </object>
 
+  <object type="Neil.BLL.RoleService, Neil.BLL" singleton="false" name="roleServiceObject" >
+  </object>
 
   
   <!--intentionally do NOT register the AccountController or the ValuesController with the container; demonstrates that the underlying

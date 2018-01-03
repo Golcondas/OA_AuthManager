@@ -18,9 +18,11 @@ EntityFrameworkTemplateFileManager fileManager = EntityFrameworkTemplateFileMana
 
 #>
 
+using Neil.IDAL;
 using Neil.Model;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data.Entity;
 using System.Linq;
 using System.Runtime.Remoting.Messaging;
@@ -39,12 +41,12 @@ foreach (EntityType entity in ItemCollection.GetItems<EntityType>().OrderBy(e =>
 #>		
 	    public static I<#=entity.Name#>Dal Create<#=entity.Name#>Dal()
         {
-
-            string classFulleName = ConfigurationManager.AppSettings["dalFullName"] + ".<#=entity.Name#>Dal";
+		
+            string classFulleName = ConfigurationManager.ConnectionStrings["dalFullName"].ConnectionString + ".<#=entity.Name#>Dal";
 
 		
             //object obj = Assembly.Load(ConfigurationManager.AppSettings["assemblyName"]).CreateInstance(classFulleName, true);
-            var obj  = CreateInstance(classFulleName,ConfigurationManager.AppSettings["assemblyName"]);
+            var obj  = CreateInstance(classFulleName,ConfigurationManager.ConnectionStrings["assemblyName"].ConnectionString);
 
 
             return obj as I<#=entity.Name#>Dal;

@@ -12,12 +12,8 @@ using System.Threading.Tasks;
 
 namespace Neil.DAL
 {
-    public class UserDal : BaseDal<UserInfo>, IUserDal
+    public partial class UserDal : BaseDal<UserInfo>, IUserDal
     {
-        IQueryable<UserInfo> IBaseDal<UserInfo>.GetAllEntity(System.Linq.Expressions.Expression<Func<UserInfo, bool>> condition, int pageIndex, int pageSize, out long total, params Model.OrderModel.OrderModelField[] orderByExpression)
-        {
-            throw new NotImplementedException();
-        }
 
     }
 }

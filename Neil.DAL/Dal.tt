@@ -17,7 +17,7 @@ string namespaceName = code.VsNamespaceSuggestion();
 EntityFrameworkTemplateFileManager fileManager = EntityFrameworkTemplateFileManager.Create(this);
 
 #>
-
+using Neil.DAL;
 using Neil.IDAL;
 using Neil.Model;
 using System;
@@ -29,7 +29,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CZBK.HeiMaOA.DAL
+namespace Neil.DAL
 {
 <#
 // Emit Entity Types

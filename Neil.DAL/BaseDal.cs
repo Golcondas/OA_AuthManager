@@ -49,7 +49,7 @@ namespace Neil.DAL
         /// </summary>
         /// <param name="condition"></param>
         /// <returns></returns>
-        public IList<T> GetAllEntity(Expression<Func<T, bool>> condition, int pageIndex, int pageSize, out long total, params OrderModelField[] orderByExpression)
+        public IQueryable<T> GetAllEntity(Expression<Func<T, bool>> condition, int pageIndex, int pageSize, out long total, params OrderModelField[] orderByExpression)
         {
             //条件过滤
             var query = db.Set<T>().AsNoTracking().Where(condition);
@@ -83,7 +83,7 @@ namespace Neil.DAL
             }
 
             total = query.Count();
-            return query.Skip((pageIndex - 1) * pageSize).Take(pageSize).ToList();
+            return query.Skip((pageIndex - 1) * pageSize).Take(pageSize);
         }
 
         //添加
