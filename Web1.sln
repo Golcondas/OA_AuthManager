@@ -43,8 +43,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DLL", "DLL", "{564876C3-95E
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Neil.Commom", "Neil.Commom\Neil.Commom.csproj", "{82DB9D19-03EE-4BAD-A7D7-5C31E08EB452}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Neil.Mysql.Model", "Neil.Mysql.Model\Neil.Mysql.Model.csproj", "{5B91BE01-5A6C-4C84-9DE2-BC29D3DAAADB}"
-EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution
 		Svn-Managed = True
@@ -95,10 +93,6 @@ Global
 		{82DB9D19-03EE-4BAD-A7D7-5C31E08EB452}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{82DB9D19-03EE-4BAD-A7D7-5C31E08EB452}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{82DB9D19-03EE-4BAD-A7D7-5C31E08EB452}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5B91BE01-5A6C-4C84-9DE2-BC29D3DAAADB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5B91BE01-5A6C-4C84-9DE2-BC29D3DAAADB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5B91BE01-5A6C-4C84-9DE2-BC29D3DAAADB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5B91BE01-5A6C-4C84-9DE2-BC29D3DAAADB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
