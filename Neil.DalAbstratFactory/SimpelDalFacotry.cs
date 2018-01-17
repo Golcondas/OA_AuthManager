@@ -22,12 +22,7 @@ namespace Neil.DalAbstratFactory
         {
 		
             string classFulleName = ConfigurationManager.ConnectionStrings["dalFullName"].ConnectionString + ".ActionInfoDal";
-
-		
-            //object obj = Assembly.Load(ConfigurationManager.AppSettings["assemblyName"]).CreateInstance(classFulleName, true);
             var obj  = CreateInstance(classFulleName,ConfigurationManager.ConnectionStrings["assemblyName"].ConnectionString);
-
-
             return obj as IActionInfoDal;
         }
 		
@@ -35,12 +30,7 @@ namespace Neil.DalAbstratFactory
         {
 		
             string classFulleName = ConfigurationManager.ConnectionStrings["dalFullName"].ConnectionString + ".R_User_ActionDal";
-
-		
-            //object obj = Assembly.Load(ConfigurationManager.AppSettings["assemblyName"]).CreateInstance(classFulleName, true);
             var obj  = CreateInstance(classFulleName,ConfigurationManager.ConnectionStrings["assemblyName"].ConnectionString);
-
-
             return obj as IR_User_ActionDal;
         }
 		
@@ -48,12 +38,7 @@ namespace Neil.DalAbstratFactory
         {
 		
             string classFulleName = ConfigurationManager.ConnectionStrings["dalFullName"].ConnectionString + ".RoleDal";
-
-		
-            //object obj = Assembly.Load(ConfigurationManager.AppSettings["assemblyName"]).CreateInstance(classFulleName, true);
             var obj  = CreateInstance(classFulleName,ConfigurationManager.ConnectionStrings["assemblyName"].ConnectionString);
-
-
             return obj as IRoleDal;
         }
 		
@@ -61,12 +46,7 @@ namespace Neil.DalAbstratFactory
         {
 		
             string classFulleName = ConfigurationManager.ConnectionStrings["dalFullName"].ConnectionString + ".UserInfoDal";
-
-		
-            //object obj = Assembly.Load(ConfigurationManager.AppSettings["assemblyName"]).CreateInstance(classFulleName, true);
             var obj  = CreateInstance(classFulleName,ConfigurationManager.ConnectionStrings["assemblyName"].ConnectionString);
-
-
             return obj as IUserInfoDal;
         }
 	}

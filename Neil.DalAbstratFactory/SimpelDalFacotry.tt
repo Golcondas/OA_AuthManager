@@ -43,12 +43,7 @@ foreach (EntityType entity in ItemCollection.GetItems<EntityType>().OrderBy(e =>
         {
 		
             string classFulleName = ConfigurationManager.ConnectionStrings["dalFullName"].ConnectionString + ".<#=entity.Name#>Dal";
-
-		
-            //object obj = Assembly.Load(ConfigurationManager.AppSettings["assemblyName"]).CreateInstance(classFulleName, true);
             var obj  = CreateInstance(classFulleName,ConfigurationManager.ConnectionStrings["assemblyName"].ConnectionString);
-
-
             return obj as I<#=entity.Name#>Dal;
         }
 <#}#>

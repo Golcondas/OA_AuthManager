@@ -4,17 +4,13 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{973403BF-9E60-4E30-B71F-FE7EE2047D25}</ProjectGuid>
+    <ProjectGuid>{5B91BE01-5A6C-4C84-9DE2-BC29D3DAAADB}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Neil.BLL</RootNamespace>
-    <AssemblyName>Neil.BLL</AssemblyName>
+    <RootNamespace>Neil.Mysql.Model</RootNamespace>
+    <AssemblyName>Neil.Mysql.Model</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <SccProjectName>Svn</SccProjectName>
-    <SccLocalPath>Svn</SccLocalPath>
-    <SccAuxPath>Svn</SccAuxPath>
-    <SccProvider>SubversionScc</SccProvider>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -34,17 +30,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -52,42 +47,46 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BaseService.cs" />
-    <Compile Include="BLL.cs">
+    <Compile Include="Model1.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>BLL.tt</DependentUpon>
+      <DependentUpon>Model1.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UserInfoSerivce.cs" />
+    <Compile Include="student.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Neil.DalAbstratFactory\Neil.DalAbstratFactory.csproj">
-      <Project>{682ee8af-a5bb-435b-acbb-bbee9ff57e76}</Project>
-      <Name>Neil.DalAbstratFactory</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Neil.DAL\Neil.DAL.csproj">
-      <Project>{80522dfc-c173-4ebb-85ab-3bd7dae74702}</Project>
-      <Name>Neil.DAL</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Neil.IBLL\Neil.IBLL.csproj">
-      <Project>{48ce08d0-ebae-486f-af21-e55ecc344bd9}</Project>
-      <Name>Neil.IBLL</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Neil.IDAL\Neil.IDAL.csproj">
-      <Project>{cdf58a09-fe2a-4f03-9c63-5c1fb32fbb9f}</Project>
-      <Name>Neil.IDAL</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Neil.Model\Neil.Model.csproj">
-      <Project>{df51bc6e-0c35-4b2e-84af-4cf7c2b0ad24}</Project>
-      <Name>Neil.Model</Name>
-    </ProjectReference>
+    <EntityDeploy Include="Model1.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
-    <None Include="BLL.tt">
+    <None Include="App.Config" />
+    <None Include="Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>BLL.cs</LastGenOutput>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.Context.cs</LastGenOutput>
+    </None>
+    <None Include="Model1.edmx.diagram">
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </None>
+    <None Include="Model1.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.cs</LastGenOutput>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
