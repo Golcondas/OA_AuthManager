@@ -1,4 +1,5 @@
-﻿using Neil.IBLL;
+﻿using Neil.Commom;
+using Neil.IBLL;
 using Neil.Model;
 using Neil.Model.ViewModel;
 using System;
@@ -25,52 +26,62 @@ namespace Neil.Web.Controllers
 
         public ActionResult GetUserInfo()
         {
-            int pageIndex = int.Parse(Request.Form["page"]);
-            int pageSize = int.Parse(Request.Form["rows"]);
-            string name=Request.Form["name"];
-            string remark=Request.Form["remark"];
-            if (string.IsNullOrEmpty(name) && string.IsNullOrEmpty(remark))
+            try
             {
-                int totalCount = 0;
-                var userInfo = userInfoService.LoadEntitiesWhere<int>(c => true, c => c.ID, false, out totalCount, pageIndex, pageSize).ToList();
-                var userInfoList = UserInfoModel.GetUserInfoList(userInfo);
+                int pageIndex = int.Parse(Request.Form["page"]);
+                int pageSize = int.Parse(Request.Form["rows"]);
+                string name = Request.Form["name"];
+                string remark = Request.Form["remark"];
+                if (string.IsNullOrEmpty(name) && string.IsNullOrEmpty(remark))
+                {
+                    int totalCount = 0;
+                    var userInfo = userInfoService.LoadEntitiesWhere<int>(c => true, c => c.ID, false, out totalCount, pageIndex, pageSize).ToList();
+                    var userInfoList = UserInfoModel.GetUserInfoList(userInfo);
 
-                var temp = from u in userInfoList
-                           select new
-                           {
-                               ID = u.ID,
-                               Name = u.UName,
-                               UPwd = u.UPwd,
-                               Remark = u.Remark,
-                               SubTime = u.SubTime,
-                               Email=u.Email,
-                           };
-                var result = temp.ToList();
-                return Json(new { rows = temp.ToList(), total = totalCount }, JsonRequestBehavior.AllowGet);
+                    var temp = from u in userInfoList
+                               select new
+                               {
+                                   ID = u.ID,
+                                   Name = u.UName,
+                                   UPwd = u.UPwd,
+                                   Remark = u.Remark,
+                                   SubTime = u.SubTime,
+                                   Email = u.Email,
+                               };
+                    var result = temp.ToList();
+                    return Json(new { rows = temp.ToList(), total = totalCount }, JsonRequestBehavior.AllowGet);
+                }
+                else
+                {
+                    Neil.Model.ViewModel.UserInfoModel model = new Model.ViewModel.UserInfoModel();
+                    model.pageIndex = pageIndex;
+                    model.pageSize = pageSize;
+                    model.UName = name;
+                    model.Remark = remark;
+                    int totalCount = 0;
+                    var userInfo = userInfoService.LoadEntitiesWhere<int>(c => c.UName.Contains(model.UName) && c.Remark.Contains(model.Remark), c => c.ID, false, out totalCount, pageIndex, pageSize);
+                    var userInfoList = UserInfoModel.GetUserInfoList(userInfo.ToList());
+
+                    var temp = from u in userInfoList
+                               select new
+                               {
+                                   ID = u.ID,
+                                   Name = u.UName,
+                                   UPwd = u.UPwd,
+                                   Remark = u.Remark,
+                                   SubTime = u.SubTime,
+                               };
+                    var result = temp.ToList();
+                    return Json(new { rows = temp.ToList(), total = totalCount }, JsonRequestBehavior.AllowGet);
+                }
             }
-            else
+            catch (Exception ex)
             {
-                Neil.Model.ViewModel.UserInfoModel model=new Model.ViewModel.UserInfoModel();
-                model.pageIndex = pageIndex;
-                model.pageSize = pageSize;
-                model.UName = name;
-                model.Remark = remark;
-                int totalCount = 0;
-                var userInfo = userInfoService.LoadEntitiesWhere<int>(c =>c.UName.Contains(model.UName)&&c.Remark.Contains(model.Remark), c => c.ID, false, out totalCount, pageIndex, pageSize);
-                var userInfoList = UserInfoModel.GetUserInfoList(userInfo.ToList());
+                var error=500;
 
-                var temp = from u in userInfoList
-                           select new
-                           {
-                               ID = u.ID,
-                               Name = u.UName,
-                               UPwd = u.UPwd,
-                               Remark = u.Remark,
-                               SubTime = u.SubTime,
-                           };
-                var result = temp.ToList();
-                return Json(new { rows = temp.ToList(), total = totalCount }, JsonRequestBehavior.AllowGet);
+                return Json(error, JsonRequestBehavior.AllowGet);
             }
+            
             
         }
 
@@ -92,7 +103,6 @@ namespace Neil.Web.Controllers
             {
                 return Content("ok");
             }
-            
         }
 
         public ActionResult AddUserInfo()
@@ -135,6 +145,11 @@ namespace Neil.Web.Controllers
                 return Content("ok");
             }
             return Content("no");
+        }
+
+        public JsonResult GetAdminInfoList() {
+            ResultData data = new ResultData();
+            return Json(data, JsonRequestBehavior.AllowGet);
         }
     }
 }

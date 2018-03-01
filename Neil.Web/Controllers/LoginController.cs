@@ -7,16 +7,18 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 
 namespace Neil.Web.Controllers
 {
+    [Authorize]
     public class LoginController : BaseController
     {
         private static log4net.ILog log = log4net.LogManager.GetLogger("LoginController");
         IBLL.IUserInfoService userInfoService { get; set; }
         //
         // GET: /Login/
-
+        [AllowAnonymous]
         public ActionResult Index()
         {
             return View();
@@ -31,6 +33,7 @@ namespace Neil.Web.Controllers
         /// 获取验证码
         /// </summary>
         /// <returns></returns>
+        [AllowAnonymous]
         public ActionResult GetValidateCode()
         {
             //生成验证码
@@ -44,7 +47,13 @@ namespace Neil.Web.Controllers
         /// <summary>
         /// 用户登录 https://www.cnblogs.com/iampkm/p/4699788.html ASP.NET MVC Cookie 身份验证 身份验证 后期写这个
         /// </summary>
+        /// <param name="code"></param>
+        /// <param name="userName"></param>
+        /// <param name="password"></param>
         /// <returns></returns>
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
         public ActionResult ValidateLogin(string code, string userName, string password)
         {
             ResultData result = new ResultData();
@@ -79,29 +88,18 @@ namespace Neil.Web.Controllers
                 var getUserInfo = userInfoService.LoadEntities(t => t.UName == userName && t.UPwd == password).FirstOrDefault();
                 if (getUserInfo != null && getUserInfo.UName == userName)
                 {
-                    String sesionid = Guid.NewGuid() + "";
-                    RedisHelper.SetStringTime(sesionid, Commom.JsonHelper.ObjectToJson(getUserInfo), DateTime.Today.AddDays(30));
-                    Response.Cookies[CookieKey.neilCookie].Value = sesionid;
-                    Response.Cookies[CookieKey.neilCookie].Expires = DateTime.Today.AddDays(30);
+                    //String sesionid = Guid.NewGuid() + "";
+                   
+                    //Response.Cookies[CookieKey.neilCookie].Value = sesionid;
+                    //Response.Cookies[CookieKey.neilCookie].Expires = DateTime.Today.AddDays(30);
+                    
+                    FormsAuthenticationTicket Ticket = new FormsAuthenticationTicket(1, userName, DateTime.Now, DateTime.Today.AddDays(30), false, Neil.Commom.JsonHelper.ObjectToJson(getUserInfo));
+
+                    Response.SetCookie(new HttpCookie(FormsAuthentication.FormsCookieName, FormsAuthentication.Encrypt(Ticket)));
+                    RedisHelper.SetStringTime(CookieKey.neilCookie + getUserInfo.ID.ToString(), Commom.JsonHelper.ObjectToJson(getUserInfo), DateTime.Today.AddDays(30));
+
                     result.issuccess = true;
                     result.message = "登录成功";
-                    /*
-                     * 
-                     *  HttpCookie nc = new HttpCookie("newcookie");
-                nc.Values["name"] = "天轰穿";
-                //nc.Values["name"] = HttpUtility.UrlEncode ("天轰穿");
-                nc.Values["age"] = "27";
-                nc.Values["dt"] = DateTime.Now.ToString();
-                Response.Cookies.Add(nc);
-                     * //读取Cookie
-                HttpCookie getcook = Request.Cookies["newcookie"];
-                //Response.Write(HttpUtility.UrlDecode(getcook.Values["name"]));
-                Response.Write((getcook.Values["name"]));
-                Response.Write("<br>"+getcook.Values["age"]);
-                Response.Write("<br>"+getcook.Values["dt"]);
-                     * 
-                     * 注意乱码
-                     * */
                 }
                 else
                 {

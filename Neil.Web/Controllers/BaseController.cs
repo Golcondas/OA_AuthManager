@@ -15,6 +15,10 @@ namespace Neil.Web.Controllers
         public UserInfo userInfoBase { get; set; }
 
         /// <summary>
+        /// 当前用户信息ID
+        /// </summary>
+        public string CurrentUserId { get; set; }
+        /// <summary>
         /// 方法过滤器的方法
         /// </summary>
         /// <param name="filterContext"></param>
