@@ -1,8 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
-MinimumVisualStudioVersion = 10.0.40219.1
+# Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Neil.Model", "Neil.Model\Neil.Model.csproj", "{DF51BC6E-0C35-4B2E-84AF-4CF7C2B0AD24}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Neil.DAL", "Neil.DAL\Neil.DAL.csproj", "{80522DFC-C173-4EBB-85AB-3BD7DAE74702}"
@@ -25,9 +23,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpringNetDemo", "SpringNetD
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DLL", "DLL", "{564876C3-95E8-4953-8F28-A1615C5DC841}"
 	ProjectSection(SolutionItems) = preProject
-		DLL\Aliyun.OSS.dll = DLL\Aliyun.OSS.dll
-		DLL\Aliyun.OSS.pdb = DLL\Aliyun.OSS.pdb
-		DLL\Aliyun.OSS.XML = DLL\Aliyun.OSS.XML
+		D:\My Download\GoogleDownload\aliyun_oss_dotnet_sdk_2_7_0\bin\Aliyun.OSS.dll = D:\My Download\GoogleDownload\aliyun_oss_dotnet_sdk_2_7_0\bin\Aliyun.OSS.dll
 		DLL\Common.Logging.dll = DLL\Common.Logging.dll
 		DLL\ICSharpCode.SharpZipLib.dll = DLL\ICSharpCode.SharpZipLib.dll
 		DLL\log4net.dll = DLL\log4net.dll
@@ -47,29 +43,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DLL", "DLL", "{564876C3-95E
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Neil.Commom", "Neil.Commom\Neil.Commom.csproj", "{82DB9D19-03EE-4BAD-A7D7-5C31E08EB452}"
 EndProject
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "AdminApp", "http://localhost:58090", "{268D7AC2-84CB-4AE5-BC97-C5B183BAF84C}"
-	ProjectSection(WebsiteProperties) = preProject
-		UseIISExpress = "true"
-		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5"
-		Debug.AspNetCompiler.VirtualPath = "/localhost_58090"
-		Debug.AspNetCompiler.PhysicalPath = "AdminApp\"
-		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_58090\"
-		Debug.AspNetCompiler.Updateable = "true"
-		Debug.AspNetCompiler.ForceOverwrite = "true"
-		Debug.AspNetCompiler.FixedNames = "false"
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.VirtualPath = "/localhost_58090"
-		Release.AspNetCompiler.PhysicalPath = "AdminApp\"
-		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_58090\"
-		Release.AspNetCompiler.Updateable = "true"
-		Release.AspNetCompiler.ForceOverwrite = "true"
-		Release.AspNetCompiler.FixedNames = "false"
-		Release.AspNetCompiler.Debug = "False"
-		SlnRelativePath = "AdminApp\"
-		DefaultWebSiteLanguage = "Visual C#"
-	EndProjectSection
-EndProject
 Global
+	GlobalSection(SubversionScc) = preSolution
+		Svn-Managed = True
+		Manager = AnkhSVN - Subversion Support for Visual Studio
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
@@ -115,19 +93,11 @@ Global
 		{82DB9D19-03EE-4BAD-A7D7-5C31E08EB452}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{82DB9D19-03EE-4BAD-A7D7-5C31E08EB452}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{82DB9D19-03EE-4BAD-A7D7-5C31E08EB452}.Release|Any CPU.Build.0 = Release|Any CPU
-		{268D7AC2-84CB-4AE5-BC97-C5B183BAF84C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{268D7AC2-84CB-4AE5-BC97-C5B183BAF84C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{268D7AC2-84CB-4AE5-BC97-C5B183BAF84C}.Release|Any CPU.ActiveCfg = Debug|Any CPU
-		{268D7AC2-84CB-4AE5-BC97-C5B183BAF84C}.Release|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{7F9F7404-FCC1-441B-ABA4-CBD0FF3084F7} = {7205C47E-6085-4EB4-924D-5F49710E30E8}
-	EndGlobalSection
-	GlobalSection(SubversionScc) = preSolution
-		Svn-Managed = True
-		Manager = AnkhSVN - Subversion Support for Visual Studio
 	EndGlobalSection
 EndGlobal
