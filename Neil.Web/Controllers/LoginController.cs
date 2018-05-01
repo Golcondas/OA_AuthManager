@@ -10,6 +10,7 @@ using System.Web.Mvc;
 
 namespace Neil.Web.Controllers
 {
+    [Authorize]
     public class LoginController : BaseController
     {
         private static log4net.ILog log = log4net.LogManager.GetLogger("LoginController");
@@ -31,6 +32,7 @@ namespace Neil.Web.Controllers
         /// 获取验证码
         /// </summary>
         /// <returns></returns>
+        [AllowAnonymous]
         public ActionResult GetValidateCode()
         {
             //生成验证码
@@ -45,6 +47,7 @@ namespace Neil.Web.Controllers
         /// 用户登录 https://www.cnblogs.com/iampkm/p/4699788.html ASP.NET MVC Cookie 身份验证 身份验证 后期写这个
         /// </summary>
         /// <returns></returns>
+        [AllowAnonymous]
         public ActionResult ValidateLogin(string code, string userName, string password)
         {
             ResultData result = new ResultData();
