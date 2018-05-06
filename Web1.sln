@@ -43,6 +43,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DLL", "DLL", "{564876C3-95E
 		DLL\Spring.Web.dll = DLL\Spring.Web.dll
 		DLL\Spring.Web.Extensions.dll = DLL\Spring.Web.Extensions.dll
 		DLL\Spring.Web.Mvc4.dll = DLL\Spring.Web.Mvc4.dll
+		Neil.AdminWeb\bin\System.Web.Razor.dll = Neil.AdminWeb\bin\System.Web.Razor.dll
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Neil.Commom", "Neil.Commom\Neil.Commom.csproj", "{82DB9D19-03EE-4BAD-A7D7-5C31E08EB452}"

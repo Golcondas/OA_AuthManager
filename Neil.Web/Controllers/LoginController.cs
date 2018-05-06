@@ -10,7 +10,6 @@ using System.Web.Mvc;
 
 namespace Neil.Web.Controllers
 {
-    [Authorize]
     public class LoginController : BaseController
     {
         private static log4net.ILog log = log4net.LogManager.GetLogger("LoginController");
