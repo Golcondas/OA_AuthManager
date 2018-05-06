@@ -112,8 +112,7 @@ namespace Neil.Web.Controllers
             {
                 log.ErrorFormat("报错-->ex:{0}", ex);
             }
-
-            return Json(result, JsonRequestBehavior.AllowGet);
+            return Content(JsonHelper.ObjectToJson(result));
         }
 
         public ActionResult UpdateUserPwd(string name,string email) 

@@ -43,31 +43,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DLL", "DLL", "{564876C3-95E
 		DLL\Spring.Web.dll = DLL\Spring.Web.dll
 		DLL\Spring.Web.Extensions.dll = DLL\Spring.Web.Extensions.dll
 		DLL\Spring.Web.Mvc4.dll = DLL\Spring.Web.Mvc4.dll
+		Neil.AdminWeb\bin\System.Web.Razor.dll = Neil.AdminWeb\bin\System.Web.Razor.dll
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Neil.Commom", "Neil.Commom\Neil.Commom.csproj", "{82DB9D19-03EE-4BAD-A7D7-5C31E08EB452}"
-EndProject
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "AdminApp", "http://localhost:58090", "{268D7AC2-84CB-4AE5-BC97-C5B183BAF84C}"
-	ProjectSection(WebsiteProperties) = preProject
-		UseIISExpress = "true"
-		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5"
-		Debug.AspNetCompiler.VirtualPath = "/localhost_58090"
-		Debug.AspNetCompiler.PhysicalPath = "AdminApp\"
-		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_58090\"
-		Debug.AspNetCompiler.Updateable = "true"
-		Debug.AspNetCompiler.ForceOverwrite = "true"
-		Debug.AspNetCompiler.FixedNames = "false"
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.VirtualPath = "/localhost_58090"
-		Release.AspNetCompiler.PhysicalPath = "AdminApp\"
-		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_58090\"
-		Release.AspNetCompiler.Updateable = "true"
-		Release.AspNetCompiler.ForceOverwrite = "true"
-		Release.AspNetCompiler.FixedNames = "false"
-		Release.AspNetCompiler.Debug = "False"
-		SlnRelativePath = "AdminApp\"
-		DefaultWebSiteLanguage = "Visual C#"
-	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -115,10 +94,6 @@ Global
 		{82DB9D19-03EE-4BAD-A7D7-5C31E08EB452}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{82DB9D19-03EE-4BAD-A7D7-5C31E08EB452}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{82DB9D19-03EE-4BAD-A7D7-5C31E08EB452}.Release|Any CPU.Build.0 = Release|Any CPU
-		{268D7AC2-84CB-4AE5-BC97-C5B183BAF84C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{268D7AC2-84CB-4AE5-BC97-C5B183BAF84C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{268D7AC2-84CB-4AE5-BC97-C5B183BAF84C}.Release|Any CPU.ActiveCfg = Debug|Any CPU
-		{268D7AC2-84CB-4AE5-BC97-C5B183BAF84C}.Release|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

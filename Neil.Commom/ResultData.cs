@@ -15,7 +15,14 @@ namespace Neil.Commom
         private bool _isSuccess;
         public bool issuccess
         {
-            get { return _isSuccess = false; }
+            get
+            {
+                if (_isSuccess)
+                {
+                    return _isSuccess;
+                }
+                return false;
+            }
             set { _isSuccess = value; }
         }
         public object data { get; set; }
