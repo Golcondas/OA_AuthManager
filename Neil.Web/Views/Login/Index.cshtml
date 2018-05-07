@@ -56,6 +56,11 @@
                                                     <img src="/Login/GetValidateCode?ID=1 " id="imgCode" alt="单击可刷新" onclick="ClickRemoveChangeCode()" />
                                                     <button id="kanbuq" class="btn btn-link" onclick="ClickRemoveChangeCode();return false;" href="javascript:void(0);">看不清，换一张</button>
                                                 </div>
+                                                <a class="grey" id="show-option" href="#" title="slide down on show">
+                                                    @*<i class="ace-icon fa fa-hand-o-right"></i>
+                                                    slide down on show*@
+                                                </a>
+
                                                 <div class="space"></div>
 
                                                 <div class="clearfix">
@@ -297,6 +302,14 @@
             $('body').attr('class', 'login-layout light-login');
             $('#id-text2').attr('class', 'grey');
             $('#id-company-text').attr('class', 'blue');
+
+            $("#show-option").tooltip({
+                show: {
+                    effect: "slideDown",
+                    delay: 250
+                }
+            });
+
         });
 
         function ClickRemoveChangeCode() {
@@ -307,7 +320,8 @@
         function Login() {
 
             if ($("#txtCode").val() == "") {
-                modalalertdemo("验证码为空");
+                $("#show-option").attr("title", "验证码为空");
+                tooltips();
             }
 
             var parm = {
@@ -325,20 +339,25 @@
                         window.location.herf = "/Home/Index";
                     } else {
                         ClickRemoveChangeCode();
-                        modalalertdemo(data.message);
+                        //modalalertdemo(data.message);
 
                     }
                 }
             });
         }
 
-        function modalalertdemo(info) {
-            $("#show-option").tooltip({
-                show: {
-                    effect: "slideDown",
-                    delay: 250,
-                    title: info
-                }
-            });
+        function tooltips() {
+            var hei = $(document.body).height() / 2;
+            var wid = $(document.body).width() / 2;
+            //$("#show-option").prev().css('left', wid);
+            $("#show-option").mouseover();
+            //$("#ui-id-1").css('left', wid)
+            //$("a[id^=ui-id-]").css('left', wid);
+            $("div[id^=ui-id-]").css('left', wid-30);
+            setTimeout(function () { sleepl() }, 1000);
         }
+        function sleepl() {
+            $("#show-option").mouseleave();
+        }
+           
     </script>
