@@ -100,6 +100,7 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{7F9F7404-FCC1-441B-ABA4-CBD0FF3084F7} = {7205C47E-6085-4EB4-924D-5F49710E30E8}
+		{564876C3-95E8-4953-8F28-A1615C5DC841} = {7205C47E-6085-4EB4-924D-5F49710E30E8}
 	EndGlobalSection
 	GlobalSection(SubversionScc) = preSolution
 		Svn-Managed = True
